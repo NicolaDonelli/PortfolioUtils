@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "python3 .github/hooks/scripts/session_context.py",
+        "powershell": "python .github/hooks/scripts/session_context.py",
+        "cwd": ".",
+        "timeoutSec": 15
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "hooks": {
+    "postToolUse": [
+      {
+        "type": "command",
+        "bash": "python3 .github/hooks/scripts/post_edit_lint.py",
+        "powershell": "python .github/hooks/scripts/post_edit_lint.py",
+        "cwd": ".",
+        "timeoutSec": 60
+      }
+    ],
+    "agentStop": [
+      {
+        "type": "command",
+        "bash": "python3 .github/hooks/scripts/quality_gate.py",
+        "powershell": "python .github/hooks/scripts/quality_gate.py",
+        "cwd": ".",
+        "timeoutSec": 900
+      }
+    ]
+  }
+}

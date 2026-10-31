@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "python3 .github/hooks/scripts/guard_tool_use.py",
+        "powershell": "python .github/hooks/scripts/guard_tool_use.py",
+        "cwd": ".",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

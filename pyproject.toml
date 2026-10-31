@@ -13,8 +13,12 @@ license = {text = "MIT"}
 requires-python = ">=3.13"
 dynamic = ["version"]
 dependencies = [
-    "tomli>=2.0.1",
-    "typing-extensions>=4.0"
+    "curl_cffi>=0.7",
+    "numpy>=2.1",
+    "pandas>=2.2",
+    "pydantic-settings>=2.4",
+    "scipy>=1.14",
+    "typing-extensions>=4.0",
 ]
 
 [project.readme]
@@ -26,8 +30,11 @@ Homepage = "https://github.com/NicolaDonelli/PortfolioUtils"
 
 [dependency-groups]
 base = [
+    "tomli>=2.0.1",
     "uv>=0.8.4",
     "pre-commit>=4.0.1",
+    "pandas-stubs>=2.2",
+    "scipy-stubs>=1.14",
 ]
 dev = [
     {include-group = "base"},
@@ -78,15 +85,19 @@ version_scheme = "no-guess-dev"
 cache-keys = [{ file = "pyproject.toml" }, { git = { commit = true, tags = true } }]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "portfolio_utils"]
 addopts = "--doctest-modules --cov=./portfolio_utils"
 log_cli = 1
 log_cli_level = "info"
 log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 log_date_format = "%Y-%m-%d %H:%M:%S"
 
+[tool.pytest_env]
+INVESTING_EMAIL = "user@example.com"
+INVESTING_PASSWORD = "not-a-real-password"  # pragma: allowlist secret
+
 [tool.coverage.report]
-fail_under = 75
+fail_under = 95
 show_missing = true
 skip_covered = true
 
@@ -100,7 +111,7 @@ omit = [
 include = ["pyproject.toml", "portfolio_utils/**/*.py", "tests/**/*.py"]
 line-length = 88 # Same as Black.
 indent-width = 4 # Same as Black.
-target-version = "py311"
+target-version = "py313"
 
 [tool.ruff.format]
 quote-style = "double" # Like Black, use double quotes for strings.
@@ -116,6 +127,10 @@ docstring-code-format = true
 docstring-code-line-length = 20
 
 [tool.ruff.lint]
+select = [
+    "E", "W", "F", "I", "N", "D", "UP", "B", "A", "C4", "C90", "S", "SIM", "PTH",
+    "RET", "ARG", "PL", "PD", "NPY", "PERF", "RUF", "DTZ", "T20", "LOG", "G",
+]
 ignore = [
     'W191', # tab-indentation
     'E111', # indentation-with-invalid-multiple
@@ -133,10 +148,13 @@ ignore = [
     'E501', # line-too-long
 ]
 
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "portfolio_utils/__init__.py" = ["E722"]
-'tests/**/*.py' = ["D"]
+"tests/**/*.py" = ["D", "S101", "PLR2004"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 7

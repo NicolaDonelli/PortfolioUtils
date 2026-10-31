@@ -147,3 +147,7 @@ data
 # Closed requirements
 requirements/requirements.txt
 requirements/requirements_dev.txt
+
+# Copilot / MCP artifacts
+.playwright-mcp/
+.github/hooks/logs/

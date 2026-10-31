@@ -1,7 +1,9 @@
 {
   "image": "mcr.microsoft.com/devcontainers/python:3.13-bookworm",
   "features": {
-    "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {}
+    "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {},
+    // Node.js is required to launch the Playwright MCP server with npx.
+    "ghcr.io/devcontainers/features/node:1": { "version": "lts" }
   },
   "customizations": {
     "vscode": {
@@ -10,12 +12,18 @@
         "ms-python.vscode-pylance",
         "ms-python.mypy-type-checker",
         "ms-toolsai.jupyter",
-        "charliermarsh.ruff"
+        "charliermarsh.ruff",
+        "GitHub.copilot-chat"
       ],
       "settings": {
         "python.terminal.activateEnvInCurrentTerminal": true
       }
     }
   },
-  "postCreateCommand": ["python", "-m", "venv", ".venv"]
+  // Secrets stay on the host: they are forwarded as environment variables, never written in the repo.
+  "remoteEnv": {
+    "CONTEXT7_API_KEY": "${localEnv:CONTEXT7_API_KEY}"
+  },
+  // Creates the venv and installs the system libraries Chromium needs for headless Playwright.
+  "postCreateCommand": "python -m venv .venv && npx -y playwright install-deps chromium"
 }

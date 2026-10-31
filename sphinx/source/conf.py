@@ -20,7 +20,7 @@ BASE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..
 
 project = 'portfolio-utils'
 package_dir = 'portfolio_utils'
-author_str = '3rdPlace s.r.l.'
+author_str = 'NicolaDonelli'
 copyright = str(date.today().year) + ', ' + author_str
 
 sys.path.insert(0, os.path.join(BASE_FOLDER))
