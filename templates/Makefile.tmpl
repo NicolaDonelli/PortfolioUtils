@@ -1,0 +1,206 @@
+# Signifies our desired python version
+# Makefile macros (or variables) are defined a little bit differently than traditional bash, keep in mind that in the Makefile there's top-level Makefile-only syntax, and everything else is bash script syntax.
+PYTHON = python
+SHELL = /bin/bash
+
+# .PHONY defines parts of the makefile that are not dependant on any specific file
+# This is most often used to store functions
+.PHONY = help
+
+src := {{SRC}}
+files := $(shell find . -name "*.py")
+doc_files := $(shell find sphinx -name "*.*")
+
+# Uncomment to store cache installation in the environment
+# cache_dir := $(shell python -c 'import site; print(site.getsitepackages()[0])')
+cache_dir := .make_cache
+package_name = $(shell python -c "import tomli;from pathlib import Path;print(tomli.loads(Path('pyproject.toml').read_text(encoding='utf-8'))['project']['name'])")
+version = $(shell python -c "from importlib.metadata import version;print(version('$(package_name)'))")
+
+$(shell mkdir -p $(cache_dir))
+
+pre_deps_tag := $(cache_dir)/.pre_deps
+env_tag := $(cache_dir)/.env_tag
+env_dev_tag := $(cache_dir)/.env_dev_tag
+build_tag := $(cache_dir)/.build_tag
+install_tag := $(cache_dir)/.install_tag
+
+# ======================
+# Rules and Dependencies
+# ======================
+
+help:
+	@echo "---------------HELP-----------------"
+	@echo "Package Name: $(package_name)"
+	@echo " "
+	@echo "Type 'make' followed by one of these keywords:"
+	@echo " "
+	@echo "  - setup for installing base requirements"
+	@echo "  - setup_dev for installing requirements for development"
+	@echo "  - build for building a tar.gz distribution"
+	@echo "  - install for installing the package"
+	@echo "  - install_dev for installing the package with development environment"
+	@echo "  - uninstall for uninstalling the environment"
+	@echo "  - format for reformatting files to adhere to PEP8 standards using ruff as configured in pyproject.toml"
+	@echo "  - lint for performing linting using ruff and pydoclint as configured in pyproject.toml"
+	@echo "  - check_format for checking file format using ruff and pydoclint as configured in pyproject.toml"
+	@echo "  - check_lint for checking linting using ruff and pydoclint as configured in pyproject.toml"
+	@echo "  - mypy for performing static type checking using mypy as configured in pyproject.toml"
+	@echo "  - licensecheck to check dependencies licences compatibility with application license using licensecheck as configured in pyproject.toml"
+	@echo "  - tests for running unittests using pytest as configured in pyproject.toml"
+	@echo "  - docs for producing documentation in html format using sphinx as configured in pyproject.toml"
+	@echo "  - checks for running check_format, check_lint, mypy and tests altogether"
+	@echo "  - changelogs for compiling changelogs using git-cliff as configured in pyproject.toml"
+	@echo "  - clean for removing cache file"
+	@echo "  - publish_test for publishing package on TestPyPI"
+	@echo "  - publish for publishing package on PyPI"
+	@echo "  - tag to create and push on origin a 'development' git tag with current package version"
+	@echo "------------------------------------"
+
+
+$(pre_deps_tag):
+	@echo "==Installing pip-tools, black and pre-commit=="
+	${PYTHON} -m pip install --upgrade --quiet pip setuptools tomli
+	${PYTHON} -m pip install --quiet --group base
+	if [[ -d .git ]] && [[ ! -s .git/hooks/pre-commit ]]; then pre-commit install; fi;
+	if [[ -d .git ]] && [[ ! -s .git/hooks/commit-msg ]]; then pre-commit install --hook-type commit-msg; fi;
+	if [[ -d .git ]] && [[ ! -s .git/hooks/pre-push ]]; then pre-commit install --hook-type pre-push; fi;
+	touch $(pre_deps_tag)
+
+requirements/requirements_dev.txt: pyproject.toml $(pre_deps_tag)
+	@echo "==Compiling requirements_dev.txt=="
+	uv pip compile \
+		--output-file $(cache_dir)/requirements_dev_tmp.txt \
+		--no-emit-index-url \
+		--all-extras \
+		--quiet \
+		--group dev \
+		pyproject.toml
+	cat $(cache_dir)/requirements_dev_tmp.txt > requirements/requirements_dev.txt
+	rm $(cache_dir)/requirements_dev_tmp.txt
+
+reqs_dev: requirements/requirements_dev.txt
+
+requirements/requirements.txt: requirements/requirements_dev.txt
+	@echo "==Compiling requirements.txt=="
+	uv pip compile \
+		--output-file $(cache_dir)/requirements_tmp.txt \
+		--constraints requirements/requirements_dev.txt \
+		--no-emit-index-url \
+		--all-extras \
+		--quiet \
+		pyproject.toml
+	cat $(cache_dir)/requirements_tmp.txt > requirements/requirements.txt
+	rm $(cache_dir)/requirements_tmp.txt
+
+reqs: requirements/requirements.txt
+
+$(env_tag): requirements/requirements.txt
+	@echo "==Installing requirements.txt=="
+	uv pip sync --quiet requirements/requirements.txt
+	rm -f $(env_dev_tag)
+	rm -f $(install_tag)
+	touch $(env_tag)
+
+$(env_dev_tag): requirements/requirements_dev.txt
+	@echo "==Installing requirements_dev.txt=="
+	uv pip sync --quiet requirements/requirements_dev.txt
+	rm -f $(env_tag)
+	rm -f $(install_tag)
+	touch $(env_dev_tag)
+
+setup: $(env_tag)
+
+setup_dev: $(env_dev_tag)
+
+$(build_tag): $(files) pyproject.toml requirements/requirements.txt
+	@echo "==Building package distribution=="
+	uv build --no-build-logs
+	ls -rt  dist/*.tar.gz | tail -1 > $(build_tag)
+
+build: $(build_tag)
+
+$(install_tag): build
+	@echo "==Installing package=="
+	uv pip install --quiet $(shell ls -rt  dist/*.tar.gz | tail -1)
+	ls -rt  dist/*.tar.gz | tail -1 > $(install_tag)
+
+uninstall:
+	@echo "==Uninstalling all packages=="
+	uv pip sync --allow-empty-requirements --quiet /dev/null
+	@echo "==Removing all tags=="
+	rm -f $(env_tag) $(env_dev_tag) $(pre_deps_tag) $(install_tag)
+
+install: setup $(install_tag)
+
+install_dev: setup_dev $(install_tag)
+
+format: setup_dev
+	${PYTHON} -m ruff format
+
+check_format: setup_dev
+	${PYTHON} -m ruff format --check
+
+check_lint: setup_dev
+	${PYTHON} -m ruff check --no-fix
+	pydoclint $(src)
+
+lint: setup_dev
+	${PYTHON} -m ruff check --fix
+
+mypy: setup_dev
+	${PYTHON} -m mypy --install-types --non-interactive
+
+tests: setup_dev
+	${PYTHON} -m pytest --numprocesses auto --dist loadfile
+
+licensecheck: setup_dev
+	${PYTHON} -m licensecheck
+
+checks: check_format check_lint mypy licensecheck tests
+
+changelog: setup_dev build
+	@if expr $(version) : '.*dev.*' > /dev/null; then echo "This is a temporary version, $(version). We do not generate changelogs for temporary versions."; exit 1; \
+	else git cliff --config pyproject.toml; fi
+
+docs: install_dev $(doc_files) pyproject.toml
+	sphinx-apidoc -f -o sphinx/source/api $(src)
+	make --directory=sphinx --file=Makefile clean html
+
+clean: uninstall
+	@echo "==Cleaning environment=="
+	uv cache clean
+	rm -rf \
+		dist \
+		docs \
+		build \
+		*.egg-info \
+		.mypy_cache \
+		.pytest_cache \
+		.make_cache \
+		$(shell find . -name "*.pyc" -not -path "./venv/*") \
+		$(shell find . -name "__pycache__" -not -path "./venv/*")
+
+publish_test: setup_dev build
+	@echo "==Publishing on TestPyPI=="
+	@if expr $(version) : '.*dev.*' > /dev/null; then echo "This is a temporary version: $(version)"; exit 1; \
+	else ${PYTHON} -m twine upload --repository testpypi dist/$(package_name)-$(version)*; fi
+
+publish: setup_dev build
+	@echo "==Publishing on PyPI=="
+	@if expr $(version) : '.*dev.*' > /dev/null; then echo "This is a temporary version: $(version)"; exit 1; \
+	else ${PYTHON} -m twine upload dist/$(package_name)-$(version)*; fi
+
+tag: $(install_tag)
+	git fetch --tags origin; \
+	TAGS=$$(git tag); \
+	if [[ " $${TAGS} " =~ " v$(version) " ]]; then \
+		echo "==Tag v$(version) already exists, nothing to do=="; \
+		exit 1; \
+	elif [[ $(version) =~ .*\.d[0-9]{8}$$ ]]; then \
+		echo "==Version $(version) is dirty, not creating tag =="; \
+		exit 1; \
+	else \
+		echo "==Version $(version) is fine, creating tag=="; \
+		git tag -a "v$(version)" -m "Version $(version)"; git push origin "v$(version)"; \
+	fi

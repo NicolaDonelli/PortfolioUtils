@@ -1,0 +1,36 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+# https://github.com/pre-commit/pre-commit/blob/main/.pre-commit-config.yaml
+default_language_version:
+    python: python{{PYTHON_VERSION}}
+default_stages: [ pre-push ]
+
+repos:
+  - repo: local
+    hooks:
+      - id: checks
+        stages: [ pre-push ]
+        name: Run checks
+        entry: make checks
+        language: system
+        require_serial: true
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        stages: [ pre-commit ]
+  - repo: meta
+    hooks:
+      - id: identity
+        stages: [ commit-msg ]
+        name: Print Commit Helper
+        language: system
+        args: [ 'Commit message convention: fix/feat/doc/perf/refactor/style/test/chore(optional scope): description' ]
+        pass_filenames: false
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.18.0
+    hooks:
+      - id: commitlint
+        stages: [ commit-msg ]
+        additional_dependencies: [ '@commitlint/config-conventional' ]
+        args: [ "--config",".commitlintrc.yaml" ]

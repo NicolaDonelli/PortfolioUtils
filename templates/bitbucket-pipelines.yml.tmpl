@@ -1,0 +1,90 @@
+image: python:{{PYTHON_VERSION}}
+
+clone:
+  depth: full
+
+pipelines:
+  pull-requests:
+    '**': #this runs as default for any branch not elsewhere defined
+      - step:
+          name: Python {{PYTHON_VERSION}}
+          script:
+            - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+            - git fetch origin
+            - git pull
+            - echo "Check typing, linting, formatting and run unit-tests"
+            - make checks
+            - echo "Make documentation"
+            - make docs
+      
+  custom: # Pipelines that are triggered manually
+    test-ci: # The name that is displayed in the list in the Bitbucket Cloud GUI
+      - step:
+          name: Python {{PYTHON_VERSION}}
+          script:
+            - echo "Check typing, linting, formatting and run unit-tests"
+            - make checks
+            - echo "Make documentation"
+            - make docs
+    release:
+      - variables:
+          - name: PROJECT_VERSION
+          - default: $(${PYTHON} -c "from importlib.metadata import version;print(version('{{PROJECT_NAME}}'))")
+
+      - step:
+          name: Check Release
+          script:
+            - python -m pip install build wheel
+            - python -m build .
+            - PROJECT_VERSION=$(${PYTHON} -c "from importlib.metadata import version;print(version('{{PROJECT_NAME}}'))")
+            - TAG=$(git describe HEAD --tags --abbrev=0)
+            - if [[ "$TAG" != "v$PROJECT_VERSION" ]]; then exit 1; fi
+            - tar -xzf $(ls -rt  dist/*.tar.gz | tail -1)
+            - DIR=$(basename -s .tar.gz $DIST)
+            - rm -rf $(find . -name "*.pyc") $(find . -name "__pycache__")
+            - files=("requirements/requirements.txt" "LICENSE" "MANIFEST.in" "PKG-INFO" "README.md")
+            - while IFS= read -d $'\0' -r file ; do if [[ "${file}" =~ .*".py" ]]; then files=("${files[@]}" "$file"); fi; done < <(find {{SRC}} -print0)
+            - for file in "${files[@]}" ; do if [ ! -f "${DIR}/${file}" ]; then echo "Missing ${file}"; exit 1; fi done
+            - rm -rf $DIR
+            - python -m pip install -r requirements/requirements_dev.txt
+            - python -m black {{SRC}} tests
+            - flake8 {{SRC}} tests
+            - mypy --install-types --non-interactive --follow-imports silent {{SRC}} tests
+            - python -m pytest
+      
+      - step:
+          name: Publish on TestPyPI
+          script:
+            - python -m build .
+            - VERSION=$(${PYTHON} -c "from importlib.metadata import version;print(version('{{PROJECT_NAME}}'))")
+            - NAME={{PROJECT_NAME}}
+            - if [[ "${VERSION}" =~ .*".dev".* || "${VERSION}" == "" ]]; then echo "This is a temporary version: ${VERSION}"; exit 1; fi python -m twine upload --repository testpypi dist/${NAME}-${VERSION}*
+
+      - step: 
+          name: Check release on TestPyPI
+          script:
+            - mkdir pkgs
+            - PROJECT_VERSION=$(${PYTHON} -c "from importlib.metadata import version;print(version('{{PROJECT_NAME}}'))")
+            - make uninstall
+            - sleep 5m
+            - python -m pip download --index-url https://test.pypi.org/simple/ --no-deps --dest pkgs {{PROJECT_NAME}}==$PROJECT_VERSION
+            - python -m pip install $(ls -rt  pkgs/* | tail -1)
+            - make setup_dev
+            - python -m pytest
+            - rm -rf pkgs
+
+      - step:
+          name: Publish on PyPI
+          script: 
+            - ${PYTHON} -m build .
+            - VERSION=$(${PYTHON} -c "from importlib.metadata import version;print(version('{{PROJECT_NAME}}'))")
+            - NAME={{PROJECT_NAME}}
+            - if [[ "${VERSION}" =~ .*".dev".* || "${VERSION}" == "" ]]; then echo "This is a temporary version: ${VERSION}"; exit 1; fi python -m twine upload dist/${NAME}-${VERSION}*
+
+    build-image:
+      - step:
+          script:
+            - PROJECT_VERSION=$(${PYTHON} -c "from importlib.metadata import version;print(version('{{PROJECT_NAME}}'))")
+            - docker build . --file Dockerfile --tag {{PROJECT_NAME}}:$PROJECT_VERSION
+
+

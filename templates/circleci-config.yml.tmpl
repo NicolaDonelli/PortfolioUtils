@@ -1,0 +1,23 @@
+version: 2.1
+
+executors:
+  python-container:
+    docker:
+      # using buster images instead of slim-buster since we need libpq-dev, make, gcc and git
+      - image: python:{{PYTHON_VERSION}}-buster
+
+jobs:
+  check-application:
+    executor: python-container
+    steps:
+      - checkout
+      - run:
+          environment:
+            PROJECT_DIR: "."
+          command: make checks
+
+workflows:
+  version: 2
+  CI:
+    jobs:
+      - check-application
