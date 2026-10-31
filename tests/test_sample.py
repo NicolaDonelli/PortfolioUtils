@@ -1,3 +1,4 @@
+#!/bin/python
 """Sample test module."""
 
 import unittest

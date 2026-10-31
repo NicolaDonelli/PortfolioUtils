@@ -1,22 +1,18 @@
 #!/bin/bash
-
 nc="\033[0m"
 red="\033[0;31m"
 green="\033[0;32m"
-
 printf "===========================================\n"
 printf "              INITIALIZATION               \n"
 printf "                  SCRIPT                   \n"
 printf "===========================================\n"
 printf "\n"
-
 root_path="$(dirname "$0")/.."
 PYTHON_VERSION=$(python --version)
 PYTHON_VERSION="${PYTHON_VERSION#Python }"
 PYTHON_VERSION="${PYTHON_VERSION%.*}"
 SEP=", "
-SUPPORTED_VERSIONS="3.6, 3.7, 3.8, 3.9, 3.10, "
-
+SUPPORTED_VERSIONS="3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14, 3.15"
 if [[ ! ${SUPPORTED_VERSIONS} =~ ${PYTHON_VERSION}${SEP} ]];
 then
   echo "Python ${PYTHON_VERSION} not supported"

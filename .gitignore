@@ -138,6 +138,12 @@ dmypy.json
 # opendiff
 *.orig
 
+# data
+data
+
+# ruff
+.ruff_cache/
+
 # Closed requirements
 requirements/requirements.txt
 requirements/requirements_dev.txt
