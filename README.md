@@ -88,6 +88,74 @@ To get a complete list of available make commands the user can simply type `make
 * ``make changelogs``, to compile changelogs 
 * ``make tag``, to create and push on origin a 'development' git tag with current package version
 
+## ETF data and portfolio analysis
+
+The executable scripts in `bin/` can download ETF history, select instruments by
+correlation, and run rolling portfolio backtests. Run any script with `--help`
+to see all its options.
+
+### Downloading Investing.com history
+
+Pass one or more ETF tickers or ISINs to download specific instruments:
+
+```bash
+python bin/download_investing_etfs.py SPY IE00B4L5Y983 \
+  --start 2015-01-01 --end 2025-12-31 --output data/selected
+```
+
+Dates are inclusive and use `YYYY-MM-DD`. If no identifiers are supplied, the
+downloader enumerates Investing.com's public ETF catalog and skips listed
+instruments that have no history. Catalog coverage depends on the public pages
+and pagination exposed by Investing.com and is **not guaranteed to be
+exhaustive**. Omitting either date uses the first or latest available observation
+for each instrument. Without `--output`, CSVs are written under
+`data/YYYYMMDD/` using the UTC download date; filenames follow
+`NAME_YYYYMMDD_YYYYMMDD.csv`. Each CSV contains `date, open, high, low, close,
+volume`.
+
+### Portfolio analysis
+
+The analysis loaders accept a directory of these CSV files and align instruments
+on their common price dates. To select a deterministic subset whose pairwise
+absolute simple-return correlations are strictly below 0.4:
+
+```bash
+python bin/select_uncorrelated_etfs.py --data-dir data/selected \
+  --max-abs-correlation 0.4
+```
+
+Use `--instruments file1.csv file2.csv` to restrict the input to named CSV files
+(stems without `.csv` are also accepted). Optional `--start-date` and
+`--end-date` restrict the correlation period; by default the script uses the
+first and last dates common to all selected instruments. It prints the selected
+names and their correlation matrix.
+
+Run a rolling-window validation followed by a separate out-of-sample evaluation:
+
+```bash
+python bin/rolling_backtest.py --data-dir data/selected \
+  --strategy max_sharpe --train-years 3 --validation-years 1
+```
+
+The rolling defaults are a three-year training window, one-year non-overlapping
+validation windows, and all eight implemented metrics. The default rolling
+period starts at the first common date and ends one year and one day before the
+last common date; out-of-sample evaluation starts on the next common trading
+date. The script prints final portfolio weights, validation-period metric
+averages, and out-of-sample metrics. Target strategies require their target
+argument (`--target-volatility` for `efficient_risk`, `--target-return` for
+`efficient_return`, `efficient_cvar`, and `efficient_semivariance`). The
+`black_litterman` strategy requires one of `--market-caps` or
+`--prior-returns`, plus either `--absolute-views` or one or more `--relative-view`
+arguments.
+
+The optimization API also provides `min_volatility`,
+`max_quadratic_utility`, `min_cvar`, `min_semivariance`, `hrp`, and
+`black_litterman`. Performance metrics are cumulative and annualized return,
+realized and annualized realized volatility, Sharpe and annualized Sharpe ratio,
+and Sortino and annualized Sortino ratio. See `--help` and the
+`portfolio_utils.analysis` package for strategy inputs and metric conventions.
+
 ## Tools for the project
 All the configurations for the following tools are contained in ``pyproject.toml`` file.
 
@@ -181,4 +249,3 @@ CI/CD workflows can be performed with either GithubActions of Circleci but, in a
 ### CI workflow
 This workflow is activated only by commits on an open Pull Request and checks the application, 
 by running ``make checks`` on checked-out code.
- 

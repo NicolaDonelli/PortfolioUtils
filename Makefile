@@ -1,7 +1,8 @@
 # Signifies our desired python version
 # Makefile macros (or variables) are defined a little bit differently than traditional bash, keep in mind that in the Makefile there's top-level Makefile-only syntax, and everything else is bash script syntax.
-PYTHON = python
+PYTHON ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python)
 SHELL = /bin/bash
+python_bin_dir := $(dir $(abspath $(PYTHON)))
 
 # .PHONY defines parts of the makefile that are not dependant on any specific file
 # This is most often used to store functions
@@ -143,7 +144,7 @@ check_format: setup_dev
 
 check_lint: setup_dev
 	${PYTHON} -m ruff check --no-fix
-	pydoclint $(src)
+	PATH="$(python_bin_dir):$$PATH" pydoclint $(src)
 
 lint: setup_dev
 	${PYTHON} -m ruff check --fix

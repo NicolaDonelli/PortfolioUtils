@@ -1,13 +1,22 @@
 # Download subpackage – reference design
 
-> Endpoints below are **hypotheses to verify** with the Playwright MCP server before coding.
-> They have been used by community projects in the past and may have changed.
+> Verified public behavior as of 2026-10-31 with `curl_cffi` GET requests. This remains
+> undocumented site behavior and may change; catalog completeness is not guaranteed.
 
-| Purpose | Candidate request (verify!) |
+| Purpose | Observed public request (2026-10-31) |
 |---|---|
-| Instrument search | `GET https://api.investing.com/api/search/v2/search?q=<ISIN or ticker>` |
-| Historical prices | `GET https://api.investing.com/api/financialdata/historical/<instrument_id>?start-date=YYYY-MM-DD&end-date=YYYY-MM-DD&time-frame=Daily&add-missing-rows=false` |
-| Typical extra header | `domain-id: www` |
+| Public ETF index | `GET https://www.investing.com/etfs/`; root links expose category pages. |
+| ETF categories | `GET https://www.investing.com/etfs/{usa-etfs,world-etfs,major-etfs,cannabis-etfs}`; rows expose IDs, names, symbols, and detail links. |
+| ETF detail | `GET https://www.investing.com/etfs/{slug}`; `__NEXT_DATA__` identifies `instrument_id` and type. |
+| Historical prices | `GET https://api.investing.com/api/financialdata/historical/<instrument_id>` with `start-date`, `end-date`, `time-frame=Daily`, `add-missing-rows=false`; `domain-id: www`. |
+
+No separate search endpoint is used. Ticker resolution scans root-linked category
+tables. The observed root exposed four categories, with 1000 USA, 708 World, 37 Major,
+and 12 Cannabis rows; no pagination links appeared in those responses. This does not
+establish that the site catalog is exhaustive. A wide historical query returned at
+most 4999 earliest rows, so retrieval continues from the latest returned date plus
+one day. The adapter uses one public `curl_cffi` session and at least 1.5 seconds
+between request starts; it does not log in.
 
 ## Settings
 

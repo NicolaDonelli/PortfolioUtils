@@ -1,0 +1,13 @@
+{
+  "data": [
+    {
+      "rowDateTimestamp": "2024-01-04T00:00:00Z",
+      "last_openRaw": "468.29998779296875",
+      "last_maxRaw": "470.95999145507812",
+      "last_minRaw": "467.04998779296875",
+      "last_closeRaw": "467.27999877929688",
+      "volumeRaw": 84232168
+    }
+  ],
+  "summary": {}
+}

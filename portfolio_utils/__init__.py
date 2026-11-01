@@ -1,8 +1,7 @@
-#!/bin/python
+"""Portfolio utilities package."""
+
+from contextlib import suppress
 from importlib.metadata import PackageNotFoundError, version
 
-try:
+with suppress(PackageNotFoundError):
     __version__ = version(__package__)
-except PackageNotFoundError:
-    # package is not installed
-    pass

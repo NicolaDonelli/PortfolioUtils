@@ -17,6 +17,7 @@ dependencies = [
     "numpy>=2.1",
     "pandas>=2.2",
     "pydantic-settings>=2.4",
+    "pyportfolioopt>=1.6.0",
     "scipy>=1.14",
     "typing-extensions>=4.0",
 ]
