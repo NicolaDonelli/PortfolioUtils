@@ -151,3 +151,6 @@ requirements/requirements_dev.txt
 # Copilot / MCP artifacts
 .playwright-mcp/
 .github/hooks/logs/
+
+# docs
+docs
