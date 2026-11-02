@@ -198,11 +198,9 @@ Run ``make mypy`` to analyse all source code and tests files.
 This project uses [`licensecheck`](https://github.com/FHPythonUtils/LicenseCheck) to check compatibility between the license of this package and the ones of its depencencies.
 
 ### Unit-testing
-This project uses [`pytest`](https://docs.pytest.org/en/stable/) to run unit-tests.
-Default configurations searches for tests under the `tests` folder. 
-It uses the `pytest-cov` plugin to measure the test coverage of the source code and the `pytest-xdist` plugin to run 
-unit-tests in parallel (parallelization is done on test file using the default number of process for the calling system).
-Run `make tests` to run all tests.
+This project uses [`pytest`](https://docs.pytest.org/en/stable/) for tests. Unit tests are in `tests/unit/` and run offline with `make tests`; this is the test target included in `make checks`.
+
+Live integration tests are in `tests/integration/`. They make real requests to Investing.com and are deliberately excluded from `make checks`. Run them explicitly with `make integration` when network access and a live site check are appropriate.
 
 ### Documentation
 This project uses [`Sphinx`](https://www.sphinx-doc.org/en/master/) as a tool to create documentation. 

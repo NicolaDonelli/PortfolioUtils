@@ -86,7 +86,7 @@ version_scheme = "no-guess-dev"
 cache-keys = [{ file = "pyproject.toml" }, { git = { commit = true, tags = true } }]
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "portfolio_utils"]
+testpaths = ["tests/unit", "portfolio_utils"]
 addopts = "--doctest-modules --cov=./portfolio_utils"
 log_cli = 1
 log_cli_level = "info"

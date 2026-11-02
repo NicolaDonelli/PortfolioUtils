@@ -6,7 +6,7 @@ python_bin_dir := $(dir $(abspath $(PYTHON)))
 
 # .PHONY defines parts of the makefile that are not dependant on any specific file
 # This is most often used to store functions
-.PHONY = help
+.PHONY: help tests integration
 
 src := portfolio_utils
 files := $(shell find . -name "*.py")
@@ -49,6 +49,7 @@ help:
 	@echo "  - mypy for performing static type checking using mypy as configured in pyproject.toml"
 	@echo "  - licensecheck to check dependencies licences compatibility with application license using licensecheck as configured in pyproject.toml"
 	@echo "  - tests for running unittests using pytest as configured in pyproject.toml"
+	@echo "  - integration for running live Investing.com integration tests using pytest"
 	@echo "  - docs for producing documentation in html format using sphinx as configured in pyproject.toml"
 	@echo "  - checks for running check_format, check_lint, mypy and tests altogether"
 	@echo "  - changelogs for compiling changelogs using git-cliff as configured in pyproject.toml"
@@ -153,7 +154,10 @@ mypy: setup_dev
 	${PYTHON} -m mypy --install-types --non-interactive
 
 tests: setup_dev
-	${PYTHON} -m pytest
+	${PYTHON} -m pytest tests/unit
+
+integration: setup_dev
+	${PYTHON} -m pytest tests/integration --no-cov
 
 licensecheck: setup_dev
 	${PYTHON} -m licensecheck
