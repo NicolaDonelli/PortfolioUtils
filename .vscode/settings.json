@@ -23,7 +23,7 @@
   "github.copilot.chat.reviewSelection.instructions": [
     { "file": ".github/copilot-guidelines/code-review.md" }
   ],
-
+  "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
   // --- Only needed if you use the "Local" session target (legacy harness) ---
   "chat.useHooks": true
 }    
