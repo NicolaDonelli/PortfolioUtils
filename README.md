@@ -176,6 +176,8 @@ to see all its options.
 
 ### Downloading Investing.com history
 
+_*To work, the download module requires valid credentials stored in a .env file directly under repo root defining the values for INVESTING_EMAIL and INVESTING_PASSWORD variables*_
+
 Pass one or more ETF tickers or ISINs to download specific instruments:
 
 ```bash
@@ -338,8 +340,10 @@ Specifically:
   - "BREAKING-CHANGE" MUST be synonymous with "BREAKING CHANGE" when used as a footer token.
 
 ## Continuous Integration and Continuous Delivery
-CI/CD workflows can be performed with either GithubActions of Circleci but, in any case, the same steps are performed.
+CI/CD workflows can be performed with GithubActions.
 
 ### CI workflow
-This workflow is activated only by commits on an open Pull Request and checks the application, 
-by running ``make checks`` on checked-out code.
+This workflow is activated only by commits on an open Pull Request and checks the application, by running ``make checks`` on checked-out code.
+
+### Github page build and deploy workflow
+This workflow is activated by each commit pushed on the main branch. It compiles the technical docs and deploys the updated Github page at https://nicoladonelli.github.io/PortfolioUtils/
