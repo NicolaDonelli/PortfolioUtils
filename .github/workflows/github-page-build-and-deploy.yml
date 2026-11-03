@@ -9,7 +9,17 @@ on:
 
 jobs:
   PublishGithubPage:
-    runs-on: ubuntu-20.04
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - 'ubuntu-latest'
+        python-version:
+          - '3.13'
+    permissions:
+      pages: write
+      contents: write
     steps:
       - name: Check out
         uses: actions/checkout@v2
@@ -30,7 +40,7 @@ jobs:
         run: make --directory=sphinx --file=Makefile html
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/html
