@@ -1,0 +1,1448 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>portfolio_utils.download package &#8212; portfolio-utils  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/portfolio_utils.download';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="portfolio_utils.analysis package" href="portfolio_utils.analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">portfolio-utils  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/readme.html">portfolio-utils</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../userguide/index.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Guide:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">portfolio_utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="portfolio_utils.html">portfolio_utils package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="portfolio_utils.analysis.html">portfolio_utils.analysis package</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">portfolio_utils.download package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/portfolio_utils.download.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>portfolio_utils.download package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.cli">portfolio_utils.download.cli module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.client">portfolio_utils.download.client module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpResponse"><code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpResponse.json"><code class="docutils literal notranslate"><span class="pre">HttpResponse.json()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpResponse.status_code"><code class="docutils literal notranslate"><span class="pre">HttpResponse.status_code</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpResponse.text"><code class="docutils literal notranslate"><span class="pre">HttpResponse.text</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpSession"><code class="docutils literal notranslate"><span class="pre">HttpSession</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpSession.get"><code class="docutils literal notranslate"><span class="pre">HttpSession.get()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.InvestingHttpClient"><code class="docutils literal notranslate"><span class="pre">InvestingHttpClient</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.InvestingHttpClient.get_json"><code class="docutils literal notranslate"><span class="pre">InvestingHttpClient.get_json()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.InvestingHttpClient.get_text"><code class="docutils literal notranslate"><span class="pre">InvestingHttpClient.get_text()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.downloader">portfolio_utils.download.downloader module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.downloader.download_etfs"><code class="docutils literal notranslate"><span class="pre">download_etfs()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.errors">portfolio_utils.download.errors module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.BlockedResponseError"><code class="docutils literal notranslate"><span class="pre">BlockedResponseError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.DownloadError"><code class="docutils literal notranslate"><span class="pre">DownloadError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.EndpointUnavailableError"><code class="docutils literal notranslate"><span class="pre">EndpointUnavailableError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.InstrumentNotFoundError"><code class="docutils literal notranslate"><span class="pre">InstrumentNotFoundError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.NoHistoryError"><code class="docutils literal notranslate"><span class="pre">NoHistoryError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.RateLimitedError"><code class="docutils literal notranslate"><span class="pre">RateLimitedError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.UnexpectedResponseError"><code class="docutils literal notranslate"><span class="pre">UnexpectedResponseError</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.models">portfolio_utils.download.models module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument"><code class="docutils literal notranslate"><span class="pre">Instrument</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.currency"><code class="docutils literal notranslate"><span class="pre">Instrument.currency</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.exchange"><code class="docutils literal notranslate"><span class="pre">Instrument.exchange</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.investing_id"><code class="docutils literal notranslate"><span class="pre">Instrument.investing_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.isin"><code class="docutils literal notranslate"><span class="pre">Instrument.isin</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.name"><code class="docutils literal notranslate"><span class="pre">Instrument.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.symbol"><code class="docutils literal notranslate"><span class="pre">Instrument.symbol</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow"><code class="docutils literal notranslate"><span class="pre">PriceRow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.close"><code class="docutils literal notranslate"><span class="pre">PriceRow.close</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.date"><code class="docutils literal notranslate"><span class="pre">PriceRow.date</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.high"><code class="docutils literal notranslate"><span class="pre">PriceRow.high</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.low"><code class="docutils literal notranslate"><span class="pre">PriceRow.low</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.open"><code class="docutils literal notranslate"><span class="pre">PriceRow.open</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.volume"><code class="docutils literal notranslate"><span class="pre">PriceRow.volume</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.source">portfolio_utils.download.source module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingComSource"><code class="docutils literal notranslate"><span class="pre">InvestingComSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingComSource.history"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.history()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingComSource.list_etfs"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.list_etfs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingComSource.resolve"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.resolve()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingDataSource"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingDataSource.history"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.history()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingDataSource.list_etfs"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.list_etfs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingDataSource.resolve"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.resolve()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.storage">portfolio_utils.download.storage module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.storage.merge_rows"><code class="docutils literal notranslate"><span class="pre">merge_rows()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.storage.read_rows"><code class="docutils literal notranslate"><span class="pre">read_rows()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.storage.write_rows"><code class="docutils literal notranslate"><span class="pre">write_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.BlockedResponseError"><code class="docutils literal notranslate"><span class="pre">BlockedResponseError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.DownloadError"><code class="docutils literal notranslate"><span class="pre">DownloadError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.EndpointUnavailableError"><code class="docutils literal notranslate"><span class="pre">EndpointUnavailableError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument"><code class="docutils literal notranslate"><span class="pre">Instrument</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.currency"><code class="docutils literal notranslate"><span class="pre">Instrument.currency</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.exchange"><code class="docutils literal notranslate"><span class="pre">Instrument.exchange</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.investing_id"><code class="docutils literal notranslate"><span class="pre">Instrument.investing_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.isin"><code class="docutils literal notranslate"><span class="pre">Instrument.isin</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.name"><code class="docutils literal notranslate"><span class="pre">Instrument.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.symbol"><code class="docutils literal notranslate"><span class="pre">Instrument.symbol</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InstrumentNotFoundError"><code class="docutils literal notranslate"><span class="pre">InstrumentNotFoundError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingComSource"><code class="docutils literal notranslate"><span class="pre">InvestingComSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingComSource.history"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.history()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingComSource.list_etfs"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.list_etfs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingComSource.resolve"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.resolve()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingDataSource"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingDataSource.history"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.history()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingDataSource.list_etfs"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.list_etfs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingDataSource.resolve"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.resolve()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.NoHistoryError"><code class="docutils literal notranslate"><span class="pre">NoHistoryError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow"><code class="docutils literal notranslate"><span class="pre">PriceRow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.close"><code class="docutils literal notranslate"><span class="pre">PriceRow.close</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.date"><code class="docutils literal notranslate"><span class="pre">PriceRow.date</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.high"><code class="docutils literal notranslate"><span class="pre">PriceRow.high</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.low"><code class="docutils literal notranslate"><span class="pre">PriceRow.low</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.open"><code class="docutils literal notranslate"><span class="pre">PriceRow.open</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.volume"><code class="docutils literal notranslate"><span class="pre">PriceRow.volume</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.RateLimitedError"><code class="docutils literal notranslate"><span class="pre">RateLimitedError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.UnexpectedResponseError"><code class="docutils literal notranslate"><span class="pre">UnexpectedResponseError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.download_etfs"><code class="docutils literal notranslate"><span class="pre">download_etfs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="portfolio-utils-download-package">
+<h1>portfolio_utils.download package<a class="headerlink" href="#portfolio-utils-download-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-portfolio_utils.download.cli">
+<span id="portfolio-utils-download-cli-module"></span><h2>portfolio_utils.download.cli module<a class="headerlink" href="#module-portfolio_utils.download.cli" title="Link to this heading">#</a></h2>
+<p>Command-line entry point for ETF history downloads.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="portfolio_utils.download.cli.main">
+<span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.cli.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#portfolio_utils.download.cli.main" title="Link to this definition">#</a></dt>
+<dd><p>Run the command-line downloader.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>argv</strong> – Optional command-line argument sequence for tests.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Process exit status.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-portfolio_utils.download.client">
+<span id="portfolio-utils-download-client-module"></span><h2>portfolio_utils.download.client module<a class="headerlink" href="#module-portfolio_utils.download.client" title="Link to this heading">#</a></h2>
+<p>Throttled HTTP primitives for the public Investing.com ETF adapter.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.HttpResponse">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.client.</span></span><span class="sig-name descname"><span class="pre">HttpResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.client.HttpResponse" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Minimal response API required by the HTTP client.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.HttpResponse.json">
+<span class="sig-name descname"><span class="pre">json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#portfolio_utils.download.client.HttpResponse.json" title="Link to this definition">#</a></dt>
+<dd><p>Decode the response body as JSON.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.HttpResponse.status_code">
+<span class="sig-name descname"><span class="pre">status_code</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#portfolio_utils.download.client.HttpResponse.status_code" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.HttpResponse.text">
+<span class="sig-name descname"><span class="pre">text</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.client.HttpResponse.text" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.HttpSession">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.client.</span></span><span class="sig-name descname"><span class="pre">HttpSession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.client.HttpSession" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Minimal GET API required from a real or fake HTTP session.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.HttpSession.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#portfolio_utils.download.client.HttpResponse" title="portfolio_utils.download.client.HttpResponse"><span class="pre">HttpResponse</span></a></span></span><a class="headerlink" href="#portfolio_utils.download.client.HttpSession.get" title="Link to this definition">#</a></dt>
+<dd><p>Perform one HTTP GET.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.InvestingHttpClient">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.client.</span></span><span class="sig-name descname"><span class="pre">InvestingHttpClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">session:</span> <span class="pre">~portfolio_utils.download.client.HttpSession,</span> <span class="pre">min_interval_s:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1.5,</span> <span class="pre">timeout_s:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">30.0,</span> <span class="pre">sleep:</span> <span class="pre">~collections.abc.Callable[[float],</span> <span class="pre">None]</span> <span class="pre">=</span> <span class="pre">&lt;built-in</span> <span class="pre">function</span> <span class="pre">sleep&gt;,</span> <span class="pre">clock:</span> <span class="pre">~collections.abc.Callable[[],</span> <span class="pre">float]</span> <span class="pre">=</span> <span class="pre">&lt;built-in</span> <span class="pre">function</span> <span class="pre">monotonic&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.client.InvestingHttpClient" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A serial, minimum-interval HTTP client with safe response errors.</p>
+<p>Initialize a client with an injected session and pacing controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> – Injected HTTP session.</p></li>
+<li><p><strong>min_interval_s</strong> – Minimum delay between request starts; at least 1.5s.</p></li>
+<li><p><strong>timeout_s</strong> – Per-request timeout in seconds.</p></li>
+<li><p><strong>sleep</strong> – Injectable sleep function.</p></li>
+<li><p><strong>clock</strong> – Injectable monotonic clock.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the interval or timeout is invalid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.InvestingHttpClient.get_json">
+<span class="sig-name descname"><span class="pre">get_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#portfolio_utils.download.client.InvestingHttpClient.get_json" title="Link to this definition">#</a></dt>
+<dd><p>Perform one throttled GET and decode any valid JSON response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – Full request URL.</p></li>
+<li><p><strong>params</strong> – Optional query parameters.</p></li>
+<li><p><strong>headers</strong> – Optional request headers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#portfolio_utils.download.errors.BlockedResponseError" title="portfolio_utils.download.errors.BlockedResponseError"><strong>BlockedResponseError</strong></a> – If the server responds with HTTP 403.</p></li>
+<li><p><a class="reference internal" href="#portfolio_utils.download.errors.RateLimitedError" title="portfolio_utils.download.errors.RateLimitedError"><strong>RateLimitedError</strong></a> – If the server responds with HTTP 429.</p></li>
+<li><p><a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><strong>DownloadError</strong></a> – If the request fails or has another non-200 status.</p></li>
+<li><p><a class="reference internal" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="portfolio_utils.download.errors.UnexpectedResponseError"><strong>UnexpectedResponseError</strong></a> – If the body is not valid JSON.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Decoded JSON value; endpoint-specific validation is not performed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.client.InvestingHttpClient.get_text">
+<span class="sig-name descname"><span class="pre">get_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#portfolio_utils.download.client.InvestingHttpClient.get_text" title="Link to this definition">#</a></dt>
+<dd><p>Perform one throttled GET and return its text body.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – Full request URL.</p></li>
+<li><p><strong>params</strong> – Optional query parameters.</p></li>
+<li><p><strong>headers</strong> – Optional request headers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#portfolio_utils.download.errors.BlockedResponseError" title="portfolio_utils.download.errors.BlockedResponseError"><strong>BlockedResponseError</strong></a> – If the server responds with HTTP 403.</p></li>
+<li><p><a class="reference internal" href="#portfolio_utils.download.errors.RateLimitedError" title="portfolio_utils.download.errors.RateLimitedError"><strong>RateLimitedError</strong></a> – If the server responds with HTTP 429.</p></li>
+<li><p><a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><strong>DownloadError</strong></a> – If the request has another non-200 status.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response text.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-portfolio_utils.download.downloader">
+<span id="portfolio-utils-download-downloader-module"></span><h2>portfolio_utils.download.downloader module<a class="headerlink" href="#module-portfolio_utils.download.downloader" title="Link to this heading">#</a></h2>
+<p>ETF history orchestration independent of Investing.com endpoint details.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="portfolio_utils.download.downloader.download_etfs">
+<span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.downloader.</span></span><span class="sig-name descname"><span class="pre">download_etfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifiers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#portfolio_utils.download.source.InvestingDataSource" title="portfolio_utils.download.source.InvestingDataSource"><span class="pre">InvestingDataSource</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.downloader.download_etfs" title="Link to this definition">#</a></dt>
+<dd><p>Download one or more ETFs sequentially and write CSV history files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>identifiers</strong> – ISINs/tickers; omitted identifiers request the public catalog.</p></li>
+<li><p><strong>start</strong> – Inclusive first date; <code class="docutils literal notranslate"><span class="pre">None</span></code> means first available observation.</p></li>
+<li><p><strong>end</strong> – Inclusive final date; <code class="docutils literal notranslate"><span class="pre">None</span></code> means latest available observation.</p></li>
+<li><p><strong>output_dir</strong> – Output directory; defaults to <code class="docutils literal notranslate"><span class="pre">data/YYYYMMDD</span></code>.</p></li>
+<li><p><strong>source</strong> – Injectable provider; defaults to the public Investing.com adapter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="portfolio_utils.download.errors.UnexpectedResponseError"><strong>UnexpectedResponseError</strong></a> – If the catalog or returned history is empty/invalid.</p></li>
+<li><p><strong>ValueError</strong> – If the date range is reversed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Paths to the written CSV files in request order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-portfolio_utils.download.errors">
+<span id="portfolio-utils-download-errors-module"></span><h2>portfolio_utils.download.errors module<a class="headerlink" href="#module-portfolio_utils.download.errors" title="Link to this heading">#</a></h2>
+<p>Errors raised by investing.com download utilities.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.errors.BlockedResponseError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.errors.</span></span><span class="sig-name descname"><span class="pre">BlockedResponseError</span></span><a class="headerlink" href="#portfolio_utils.download.errors.BlockedResponseError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when a request is blocked by the remote service.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.errors.DownloadError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.errors.</span></span><span class="sig-name descname"><span class="pre">DownloadError</span></span><a class="headerlink" href="#portfolio_utils.download.errors.DownloadError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></p>
+<p>Base error for download failures.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.errors.EndpointUnavailableError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.errors.</span></span><span class="sig-name descname"><span class="pre">EndpointUnavailableError</span></span><a class="headerlink" href="#portfolio_utils.download.errors.EndpointUnavailableError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when the requested data source is not available.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.errors.InstrumentNotFoundError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.errors.</span></span><span class="sig-name descname"><span class="pre">InstrumentNotFoundError</span></span><a class="headerlink" href="#portfolio_utils.download.errors.InstrumentNotFoundError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when an identifier cannot be resolved.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.errors.NoHistoryError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.errors.</span></span><span class="sig-name descname"><span class="pre">NoHistoryError</span></span><a class="headerlink" href="#portfolio_utils.download.errors.NoHistoryError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="portfolio_utils.download.errors.UnexpectedResponseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnexpectedResponseError</span></code></a></p>
+<p>Raised when a valid instrument has no historical price rows.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.errors.RateLimitedError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.errors.</span></span><span class="sig-name descname"><span class="pre">RateLimitedError</span></span><a class="headerlink" href="#portfolio_utils.download.errors.RateLimitedError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when the remote service reports a rate limit.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.errors.UnexpectedResponseError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.errors.</span></span><span class="sig-name descname"><span class="pre">UnexpectedResponseError</span></span><a class="headerlink" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when a response or price record is invalid.</p>
+</dd></dl>
+
+</section>
+<section id="module-portfolio_utils.download.models">
+<span id="portfolio-utils-download-models-module"></span><h2>portfolio_utils.download.models module<a class="headerlink" href="#module-portfolio_utils.download.models" title="Link to this heading">#</a></h2>
+<p>Typed models shared by downloader components.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.Instrument">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.models.</span></span><span class="sig-name descname"><span class="pre">Instrument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">investing_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exchange</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.models.Instrument" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Resolved exchange-traded fund descriptor.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.Instrument.currency">
+<span class="sig-name descname"><span class="pre">currency</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.models.Instrument.currency" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.Instrument.exchange">
+<span class="sig-name descname"><span class="pre">exchange</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.models.Instrument.exchange" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.Instrument.investing_id">
+<span class="sig-name descname"><span class="pre">investing_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.models.Instrument.investing_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.Instrument.isin">
+<span class="sig-name descname"><span class="pre">isin</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.models.Instrument.isin" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.Instrument.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.models.Instrument.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.Instrument.symbol">
+<span class="sig-name descname"><span class="pre">symbol</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.models.Instrument.symbol" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.PriceRow">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.models.</span></span><span class="sig-name descname"><span class="pre">PriceRow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.models.PriceRow" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>One daily OHLCV observation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.PriceRow.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#portfolio_utils.download.models.PriceRow.close" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.PriceRow.date">
+<span class="sig-name descname"><span class="pre">date</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">date</span></span><a class="headerlink" href="#portfolio_utils.download.models.PriceRow.date" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.PriceRow.high">
+<span class="sig-name descname"><span class="pre">high</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#portfolio_utils.download.models.PriceRow.high" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.PriceRow.low">
+<span class="sig-name descname"><span class="pre">low</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#portfolio_utils.download.models.PriceRow.low" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.PriceRow.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#portfolio_utils.download.models.PriceRow.open" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.models.PriceRow.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#portfolio_utils.download.models.PriceRow.volume" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-portfolio_utils.download.source">
+<span id="portfolio-utils-download-source-module"></span><h2>portfolio_utils.download.source module<a class="headerlink" href="#module-portfolio_utils.download.source" title="Link to this heading">#</a></h2>
+<p>Verified public Investing.com ETF pages and historical-data endpoint.</p>
+<p>Verification date: 2026-10-31, using public <code class="docutils literal notranslate"><span class="pre">curl_cffi</span></code> GET requests only. No
+account, login flow, cookies, or protection bypass is used. Site pages returned 200
+with a Chrome-impersonating <code class="docutils literal notranslate"><span class="pre">curl_cffi</span></code> session; direct Playwright navigation to a
+detail page returned 403.</p>
+<p>Undocumented endpoints observed and used by <a class="reference internal" href="#portfolio_utils.download.source.InvestingComSource" title="portfolio_utils.download.source.InvestingComSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvestingComSource</span></code></a>:</p>
+<ul class="simple">
+<li><p>ETF index: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">https://www.investing.com/etfs/</span></code>; no query parameters and no
+application-supplied headers (<code class="docutils literal notranslate"><span class="pre">curl_cffi</span></code> Chrome impersonation defaults).
+Response is HTML with links to category pages.</p></li>
+<li><p>Category pages: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">https://www.investing.com/etfs/{category}</span></code>, where the index
+exposed <code class="docutils literal notranslate"><span class="pre">usa-etfs</span></code>, <code class="docutils literal notranslate"><span class="pre">world-etfs</span></code>, <code class="docutils literal notranslate"><span class="pre">major-etfs</span></code>, and <code class="docutils literal notranslate"><span class="pre">cannabis-etfs</span></code>; no
+query parameters and no application-supplied headers. HTML rows contain
+<code class="docutils literal notranslate"><span class="pre">tr#pair_&lt;id&gt;</span></code>, a <code class="docutils literal notranslate"><span class="pre">span[data-name][data-id]</span></code>, a symbol cell
+<code class="docutils literal notranslate"><span class="pre">td.left.symbol[title]</span></code>, and an ETF detail link. At verification, responses had
+1000 USA rows, 708 World rows, 37 Major rows, and 12 Cannabis rows. No pagination
+links were found in these observed HTML pages. The category set and contents may
+change; enumeration is limited to root-linked categories and explicit pagination
+links and is not claimed to be an exhaustive Investing.com catalog.</p></li>
+<li><p>ETF detail pages: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">https://www.investing.com/etfs/{slug}</span></code>; no query
+parameters and no application-supplied headers. The observed Next.js payload
+included <code class="docutils literal notranslate"><span class="pre">props.pageProps.identifiers.instrument_id</span></code> and <code class="docutils literal notranslate"><span class="pre">type=&quot;etf&quot;</span></code>.
+Category-row identifiers are used directly; detail pages are not fetched per ETF.</p></li>
+<li><p>Historical prices: <code class="docutils literal notranslate"><span class="pre">GET</span>
+<span class="pre">https://api.investing.com/api/financialdata/historical/{instrument_id}</span></code> with
+<code class="docutils literal notranslate"><span class="pre">start-date=YYYY-MM-DD</span></code>, <code class="docutils literal notranslate"><span class="pre">end-date=YYYY-MM-DD</span></code>, <code class="docutils literal notranslate"><span class="pre">time-frame=Daily</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">add-missing-rows=false</span></code>; required application header <code class="docutils literal notranslate"><span class="pre">domain-id:</span> <span class="pre">www</span></code>.
+Response is JSON with <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">summary</span></code>; daily data uses
+<code class="docutils literal notranslate"><span class="pre">rowDateTimestamp</span></code>, <code class="docutils literal notranslate"><span class="pre">last_openRaw</span></code>, <code class="docutils literal notranslate"><span class="pre">last_maxRaw</span></code>, <code class="docutils literal notranslate"><span class="pre">last_minRaw</span></code>,
+<code class="docutils literal notranslate"><span class="pre">last_closeRaw</span></code>, and <code class="docutils literal notranslate"><span class="pre">volumeRaw</span></code>. Rows are descending. A wide SPY request
+returned 4999 earliest records; the adapter advances from the latest returned
+date plus one day to retrieve subsequent records.</p></li>
+</ul>
+<p>Fixtures in <code class="docutils literal notranslate"><span class="pre">tests/resources/investing/</span></code> contain small anonymized examples. There
+is no general search endpoint: identifier lookup scans the observed root-linked
+category tables, so an identifier outside those categories can remain unresolved.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.source.InvestingComSource">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.source.</span></span><span class="sig-name descname"><span class="pre">InvestingComSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#portfolio_utils.download.client.HttpSession" title="portfolio_utils.download.client.HttpSession"><span class="pre">HttpSession</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_interval_s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">today</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">date</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.source.InvestingComSource" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Sequential public ETF catalog and historical-price adapter.</p>
+<p>Initialize one reusable serial public HTTP session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> – Optional injected fake or real HTTP session.</p></li>
+<li><p><strong>min_interval_s</strong> – Minimum request-start interval.</p></li>
+<li><p><strong>sleep</strong> – Optional injected sleep function.</p></li>
+<li><p><strong>clock</strong> – Optional injected monotonic clock.</p></li>
+<li><p><strong>today</strong> – Optional injected date provider.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.source.InvestingComSource.history">
+<span class="sig-name descname"><span class="pre">history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instrument</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.source.InvestingComSource.history" title="Link to this definition">#</a></dt>
+<dd><p>Fetch all available daily rows, continuing after the observed 4999 cap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instrument</strong> – Resolved ETF.</p></li>
+<li><p><strong>start</strong> – Inclusive first date; defaults to 1950-01-01.</p></li>
+<li><p><strong>end</strong> – Inclusive final date; defaults to today’s UTC date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the date range is reversed.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Validated rows in ascending date order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.source.InvestingComSource.list_etfs">
+<span class="sig-name descname"><span class="pre">list_etfs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.source.InvestingComSource.list_etfs" title="Link to this definition">#</a></dt>
+<dd><p>Enumerate ETFs from root-linked categories and explicit page links.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="portfolio_utils.download.errors.UnexpectedResponseError"><strong>UnexpectedResponseError</strong></a> – If pages contain no usable ETF rows.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Deduplicated instruments in category discovery order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.source.InvestingComSource.resolve">
+<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a></span></span><a class="headerlink" href="#portfolio_utils.download.source.InvestingComSource.resolve" title="Link to this definition">#</a></dt>
+<dd><p>Resolve a ticker, ISIN, name, or numeric ID by scanning public categories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>identifier</strong> – ETF symbol, ISIN, name, or Investing.com ID.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#portfolio_utils.download.errors.InstrumentNotFoundError" title="portfolio_utils.download.errors.InstrumentNotFoundError"><strong>InstrumentNotFoundError</strong></a> – If no root-linked category matches.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Matching ETF descriptor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.source.InvestingDataSource">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.source.</span></span><span class="sig-name descname"><span class="pre">InvestingDataSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.source.InvestingDataSource" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Data-provider contract implemented by the public Investing.com adapter.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.source.InvestingDataSource.history">
+<span class="sig-name descname"><span class="pre">history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instrument</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.source.InvestingDataSource.history" title="Link to this definition">#</a></dt>
+<dd><p>Return daily historical prices from the public endpoint.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.source.InvestingDataSource.list_etfs">
+<span class="sig-name descname"><span class="pre">list_etfs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.source.InvestingDataSource.list_etfs" title="Link to this definition">#</a></dt>
+<dd><p>Return instruments found in root-linked public ETF categories.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.source.InvestingDataSource.resolve">
+<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a></span></span><a class="headerlink" href="#portfolio_utils.download.source.InvestingDataSource.resolve" title="Link to this definition">#</a></dt>
+<dd><p>Resolve a ticker, ISIN, name, or numeric ID against public categories.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-portfolio_utils.download.storage">
+<span id="portfolio-utils-download-storage-module"></span><h2>portfolio_utils.download.storage module<a class="headerlink" href="#module-portfolio_utils.download.storage" title="Link to this heading">#</a></h2>
+<p>CSV storage for daily ETF price rows.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="portfolio_utils.download.storage.merge_rows">
+<span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.storage.</span></span><span class="sig-name descname"><span class="pre">merge_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">existing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incoming</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.storage.merge_rows" title="Link to this definition">#</a></dt>
+<dd><p>Merge price rows, preferring incoming rows on duplicate dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>existing</strong> – Previously stored rows.</p></li>
+<li><p><strong>incoming</strong> – Newly fetched rows.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="portfolio_utils.download.errors.UnexpectedResponseError"><strong>UnexpectedResponseError</strong></a> – If a row is invalid.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unique rows in ascending date order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="portfolio_utils.download.storage.read_rows">
+<span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.storage.</span></span><span class="sig-name descname"><span class="pre">read_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.storage.read_rows" title="Link to this definition">#</a></dt>
+<dd><p>Read and validate a CSV file using the documented columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> – Source CSV path.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="portfolio_utils.download.errors.UnexpectedResponseError"><strong>UnexpectedResponseError</strong></a> – If the header or a record is invalid.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Validated rows in file order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="portfolio_utils.download.storage.write_rows">
+<span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.storage.</span></span><span class="sig-name descname"><span class="pre">write_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#portfolio_utils.download.storage.write_rows" title="Link to this definition">#</a></dt>
+<dd><p>Atomically write validated rows to the documented CSV schema.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – Destination CSV path.</p></li>
+<li><p><strong>rows</strong> – Rows to write.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="portfolio_utils.download.errors.UnexpectedResponseError"><strong>UnexpectedResponseError</strong></a> – If a row is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-portfolio_utils.download">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-portfolio_utils.download" title="Link to this heading">#</a></h2>
+<p>Public facade for sequential Investing.com ETF historical downloads.</p>
+<p>The public HTML and historical endpoint are implemented from the verified evidence
+documented in <a class="reference internal" href="#module-portfolio_utils.download.source" title="portfolio_utils.download.source"><code class="xref py py-mod docutils literal notranslate"><span class="pre">portfolio_utils.download.source</span></code></a>. Catalog enumeration follows
+categories linked by the index and explicit pagination links; completeness beyond
+those observed pages is not claimed.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.BlockedResponseError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">BlockedResponseError</span></span><a class="headerlink" href="#portfolio_utils.download.BlockedResponseError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when a request is blocked by the remote service.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.DownloadError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">DownloadError</span></span><a class="headerlink" href="#portfolio_utils.download.DownloadError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></p>
+<p>Base error for download failures.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.EndpointUnavailableError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">EndpointUnavailableError</span></span><a class="headerlink" href="#portfolio_utils.download.EndpointUnavailableError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when the requested data source is not available.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.Instrument">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">Instrument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">investing_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exchange</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.Instrument" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Resolved exchange-traded fund descriptor.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.Instrument.currency">
+<span class="sig-name descname"><span class="pre">currency</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.Instrument.currency" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.Instrument.exchange">
+<span class="sig-name descname"><span class="pre">exchange</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.Instrument.exchange" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.Instrument.investing_id">
+<span class="sig-name descname"><span class="pre">investing_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.Instrument.investing_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.Instrument.isin">
+<span class="sig-name descname"><span class="pre">isin</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.Instrument.isin" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.Instrument.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.Instrument.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.Instrument.symbol">
+<span class="sig-name descname"><span class="pre">symbol</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#portfolio_utils.download.Instrument.symbol" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.InstrumentNotFoundError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">InstrumentNotFoundError</span></span><a class="headerlink" href="#portfolio_utils.download.InstrumentNotFoundError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when an identifier cannot be resolved.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.InvestingComSource">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">InvestingComSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#portfolio_utils.download.client.HttpSession" title="portfolio_utils.download.client.HttpSession"><span class="pre">HttpSession</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_interval_s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">today</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">date</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.InvestingComSource" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Sequential public ETF catalog and historical-price adapter.</p>
+<p>Initialize one reusable serial public HTTP session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> – Optional injected fake or real HTTP session.</p></li>
+<li><p><strong>min_interval_s</strong> – Minimum request-start interval.</p></li>
+<li><p><strong>sleep</strong> – Optional injected sleep function.</p></li>
+<li><p><strong>clock</strong> – Optional injected monotonic clock.</p></li>
+<li><p><strong>today</strong> – Optional injected date provider.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.InvestingComSource.history">
+<span class="sig-name descname"><span class="pre">history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instrument</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.InvestingComSource.history" title="Link to this definition">#</a></dt>
+<dd><p>Fetch all available daily rows, continuing after the observed 4999 cap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instrument</strong> – Resolved ETF.</p></li>
+<li><p><strong>start</strong> – Inclusive first date; defaults to 1950-01-01.</p></li>
+<li><p><strong>end</strong> – Inclusive final date; defaults to today’s UTC date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the date range is reversed.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Validated rows in ascending date order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.InvestingComSource.list_etfs">
+<span class="sig-name descname"><span class="pre">list_etfs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.InvestingComSource.list_etfs" title="Link to this definition">#</a></dt>
+<dd><p>Enumerate ETFs from root-linked categories and explicit page links.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#portfolio_utils.download.UnexpectedResponseError" title="portfolio_utils.download.UnexpectedResponseError"><strong>UnexpectedResponseError</strong></a> – If pages contain no usable ETF rows.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Deduplicated instruments in category discovery order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.InvestingComSource.resolve">
+<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a></span></span><a class="headerlink" href="#portfolio_utils.download.InvestingComSource.resolve" title="Link to this definition">#</a></dt>
+<dd><p>Resolve a ticker, ISIN, name, or numeric ID by scanning public categories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>identifier</strong> – ETF symbol, ISIN, name, or Investing.com ID.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#portfolio_utils.download.InstrumentNotFoundError" title="portfolio_utils.download.InstrumentNotFoundError"><strong>InstrumentNotFoundError</strong></a> – If no root-linked category matches.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Matching ETF descriptor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.InvestingDataSource">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">InvestingDataSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.InvestingDataSource" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Data-provider contract implemented by the public Investing.com adapter.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.InvestingDataSource.history">
+<span class="sig-name descname"><span class="pre">history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instrument</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.PriceRow" title="portfolio_utils.download.models.PriceRow"><span class="pre">PriceRow</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.InvestingDataSource.history" title="Link to this definition">#</a></dt>
+<dd><p>Return daily historical prices from the public endpoint.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.InvestingDataSource.list_etfs">
+<span class="sig-name descname"><span class="pre">list_etfs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.InvestingDataSource.list_etfs" title="Link to this definition">#</a></dt>
+<dd><p>Return instruments found in root-linked public ETF categories.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="portfolio_utils.download.InvestingDataSource.resolve">
+<span class="sig-name descname"><span class="pre">resolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#portfolio_utils.download.models.Instrument" title="portfolio_utils.download.models.Instrument"><span class="pre">Instrument</span></a></span></span><a class="headerlink" href="#portfolio_utils.download.InvestingDataSource.resolve" title="Link to this definition">#</a></dt>
+<dd><p>Resolve a ticker, ISIN, name, or numeric ID against public categories.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.NoHistoryError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">NoHistoryError</span></span><a class="headerlink" href="#portfolio_utils.download.NoHistoryError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.UnexpectedResponseError" title="portfolio_utils.download.errors.UnexpectedResponseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnexpectedResponseError</span></code></a></p>
+<p>Raised when a valid instrument has no historical price rows.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="portfolio_utils.download.PriceRow">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">PriceRow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#portfolio_utils.download.PriceRow" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>One daily OHLCV observation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.PriceRow.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#portfolio_utils.download.PriceRow.close" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.PriceRow.date">
+<span class="sig-name descname"><span class="pre">date</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">date</span></span><a class="headerlink" href="#portfolio_utils.download.PriceRow.date" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.PriceRow.high">
+<span class="sig-name descname"><span class="pre">high</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#portfolio_utils.download.PriceRow.high" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.PriceRow.low">
+<span class="sig-name descname"><span class="pre">low</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#portfolio_utils.download.PriceRow.low" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.PriceRow.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#portfolio_utils.download.PriceRow.open" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="portfolio_utils.download.PriceRow.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#portfolio_utils.download.PriceRow.volume" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.RateLimitedError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">RateLimitedError</span></span><a class="headerlink" href="#portfolio_utils.download.RateLimitedError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when the remote service reports a rate limit.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="portfolio_utils.download.UnexpectedResponseError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">UnexpectedResponseError</span></span><a class="headerlink" href="#portfolio_utils.download.UnexpectedResponseError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#portfolio_utils.download.errors.DownloadError" title="portfolio_utils.download.errors.DownloadError"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadError</span></code></a></p>
+<p>Raised when a response or price record is invalid.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="portfolio_utils.download.download_etfs">
+<span class="sig-prename descclassname"><span class="pre">portfolio_utils.download.</span></span><span class="sig-name descname"><span class="pre">download_etfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifiers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#portfolio_utils.download.source.InvestingDataSource" title="portfolio_utils.download.source.InvestingDataSource"><span class="pre">InvestingDataSource</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#portfolio_utils.download.download_etfs" title="Link to this definition">#</a></dt>
+<dd><p>Download one or more ETFs sequentially and write CSV history files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>identifiers</strong> – ISINs/tickers; omitted identifiers request the public catalog.</p></li>
+<li><p><strong>start</strong> – Inclusive first date; <code class="docutils literal notranslate"><span class="pre">None</span></code> means first available observation.</p></li>
+<li><p><strong>end</strong> – Inclusive final date; <code class="docutils literal notranslate"><span class="pre">None</span></code> means latest available observation.</p></li>
+<li><p><strong>output_dir</strong> – Output directory; defaults to <code class="docutils literal notranslate"><span class="pre">data/YYYYMMDD</span></code>.</p></li>
+<li><p><strong>source</strong> – Injectable provider; defaults to the public Investing.com adapter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#portfolio_utils.download.UnexpectedResponseError" title="portfolio_utils.download.UnexpectedResponseError"><strong>UnexpectedResponseError</strong></a> – If the catalog or returned history is empty/invalid.</p></li>
+<li><p><strong>ValueError</strong> – If the date range is reversed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Paths to the written CSV files in request order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="portfolio_utils.analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">portfolio_utils.analysis package</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.cli">portfolio_utils.download.cli module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.client">portfolio_utils.download.client module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpResponse"><code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpResponse.json"><code class="docutils literal notranslate"><span class="pre">HttpResponse.json()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpResponse.status_code"><code class="docutils literal notranslate"><span class="pre">HttpResponse.status_code</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpResponse.text"><code class="docutils literal notranslate"><span class="pre">HttpResponse.text</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpSession"><code class="docutils literal notranslate"><span class="pre">HttpSession</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.HttpSession.get"><code class="docutils literal notranslate"><span class="pre">HttpSession.get()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.InvestingHttpClient"><code class="docutils literal notranslate"><span class="pre">InvestingHttpClient</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.InvestingHttpClient.get_json"><code class="docutils literal notranslate"><span class="pre">InvestingHttpClient.get_json()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.client.InvestingHttpClient.get_text"><code class="docutils literal notranslate"><span class="pre">InvestingHttpClient.get_text()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.downloader">portfolio_utils.download.downloader module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.downloader.download_etfs"><code class="docutils literal notranslate"><span class="pre">download_etfs()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.errors">portfolio_utils.download.errors module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.BlockedResponseError"><code class="docutils literal notranslate"><span class="pre">BlockedResponseError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.DownloadError"><code class="docutils literal notranslate"><span class="pre">DownloadError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.EndpointUnavailableError"><code class="docutils literal notranslate"><span class="pre">EndpointUnavailableError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.InstrumentNotFoundError"><code class="docutils literal notranslate"><span class="pre">InstrumentNotFoundError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.NoHistoryError"><code class="docutils literal notranslate"><span class="pre">NoHistoryError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.RateLimitedError"><code class="docutils literal notranslate"><span class="pre">RateLimitedError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.errors.UnexpectedResponseError"><code class="docutils literal notranslate"><span class="pre">UnexpectedResponseError</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.models">portfolio_utils.download.models module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument"><code class="docutils literal notranslate"><span class="pre">Instrument</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.currency"><code class="docutils literal notranslate"><span class="pre">Instrument.currency</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.exchange"><code class="docutils literal notranslate"><span class="pre">Instrument.exchange</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.investing_id"><code class="docutils literal notranslate"><span class="pre">Instrument.investing_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.isin"><code class="docutils literal notranslate"><span class="pre">Instrument.isin</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.name"><code class="docutils literal notranslate"><span class="pre">Instrument.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.Instrument.symbol"><code class="docutils literal notranslate"><span class="pre">Instrument.symbol</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow"><code class="docutils literal notranslate"><span class="pre">PriceRow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.close"><code class="docutils literal notranslate"><span class="pre">PriceRow.close</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.date"><code class="docutils literal notranslate"><span class="pre">PriceRow.date</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.high"><code class="docutils literal notranslate"><span class="pre">PriceRow.high</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.low"><code class="docutils literal notranslate"><span class="pre">PriceRow.low</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.open"><code class="docutils literal notranslate"><span class="pre">PriceRow.open</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.models.PriceRow.volume"><code class="docutils literal notranslate"><span class="pre">PriceRow.volume</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.source">portfolio_utils.download.source module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingComSource"><code class="docutils literal notranslate"><span class="pre">InvestingComSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingComSource.history"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.history()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingComSource.list_etfs"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.list_etfs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingComSource.resolve"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.resolve()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingDataSource"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingDataSource.history"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.history()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingDataSource.list_etfs"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.list_etfs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.source.InvestingDataSource.resolve"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.resolve()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download.storage">portfolio_utils.download.storage module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.storage.merge_rows"><code class="docutils literal notranslate"><span class="pre">merge_rows()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.storage.read_rows"><code class="docutils literal notranslate"><span class="pre">read_rows()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.storage.write_rows"><code class="docutils literal notranslate"><span class="pre">write_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-portfolio_utils.download">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.BlockedResponseError"><code class="docutils literal notranslate"><span class="pre">BlockedResponseError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.DownloadError"><code class="docutils literal notranslate"><span class="pre">DownloadError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.EndpointUnavailableError"><code class="docutils literal notranslate"><span class="pre">EndpointUnavailableError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument"><code class="docutils literal notranslate"><span class="pre">Instrument</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.currency"><code class="docutils literal notranslate"><span class="pre">Instrument.currency</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.exchange"><code class="docutils literal notranslate"><span class="pre">Instrument.exchange</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.investing_id"><code class="docutils literal notranslate"><span class="pre">Instrument.investing_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.isin"><code class="docutils literal notranslate"><span class="pre">Instrument.isin</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.name"><code class="docutils literal notranslate"><span class="pre">Instrument.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.Instrument.symbol"><code class="docutils literal notranslate"><span class="pre">Instrument.symbol</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InstrumentNotFoundError"><code class="docutils literal notranslate"><span class="pre">InstrumentNotFoundError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingComSource"><code class="docutils literal notranslate"><span class="pre">InvestingComSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingComSource.history"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.history()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingComSource.list_etfs"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.list_etfs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingComSource.resolve"><code class="docutils literal notranslate"><span class="pre">InvestingComSource.resolve()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingDataSource"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingDataSource.history"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.history()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingDataSource.list_etfs"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.list_etfs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.InvestingDataSource.resolve"><code class="docutils literal notranslate"><span class="pre">InvestingDataSource.resolve()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.NoHistoryError"><code class="docutils literal notranslate"><span class="pre">NoHistoryError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow"><code class="docutils literal notranslate"><span class="pre">PriceRow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.close"><code class="docutils literal notranslate"><span class="pre">PriceRow.close</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.date"><code class="docutils literal notranslate"><span class="pre">PriceRow.date</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.high"><code class="docutils literal notranslate"><span class="pre">PriceRow.high</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.low"><code class="docutils literal notranslate"><span class="pre">PriceRow.low</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.open"><code class="docutils literal notranslate"><span class="pre">PriceRow.open</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.PriceRow.volume"><code class="docutils literal notranslate"><span class="pre">PriceRow.volume</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.RateLimitedError"><code class="docutils literal notranslate"><span class="pre">RateLimitedError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.UnexpectedResponseError"><code class="docutils literal notranslate"><span class="pre">UnexpectedResponseError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio_utils.download.download_etfs"><code class="docutils literal notranslate"><span class="pre">download_etfs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Author name not set
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, NicolaDonelli.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

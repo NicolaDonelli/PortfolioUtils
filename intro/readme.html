@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>portfolio-utils &#8212; portfolio-utils  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=4418a689" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro/readme';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="../userguide/index.html" />
+    <link rel="prev" title="Welcome to portfolio-utils documentation!" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">portfolio-utils  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">portfolio-utils</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../userguide/index.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Developer Guide:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/modules.html">portfolio_utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api/portfolio_utils.html">portfolio_utils package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/portfolio_utils.analysis.html">portfolio_utils.analysis package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/portfolio_utils.download.html">portfolio_utils.download package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/intro/readme.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>portfolio-utils</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-application">Run the application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-the-application">Clone the application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-environment-variables">Set environment variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-circleci">Setup Circleci</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-structure">Repository structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-make">GNU Make</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etf-data-and-portfolio-analysis">ETF data and portfolio analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-investing-com-history">Downloading Investing.com history</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-analysis">Portfolio analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-the-project">Tools for the project</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-tracking">Requirements tracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-style">Coding style</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-analysis">Code analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-type-checking">Static type checking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#license-compatibility-checks">License compatibility checks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing">Unit-testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-versioning">Semantic Versioning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog-generation">Changelog generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-hooks">Git hooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-and-continuous-delivery">Continuous Integration and Continuous Delivery</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-workflow">CI workflow</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="portfolio-utils">
+<h1>portfolio-utils<a class="headerlink" href="#portfolio-utils" title="Link to this heading">#</a></h1>
+<p>This project contains the python package known as “portfolio-utils”. It requires Python 3.13.</p>
+<section id="run-the-application">
+<h2>Run the application<a class="headerlink" href="#run-the-application" title="Link to this heading">#</a></h2>
+<section id="clone-the-application">
+<h3>Clone the application<a class="headerlink" href="#clone-the-application" title="Link to this heading">#</a></h3>
+<p>Clone the code directly from the repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NicolaDonelli</span><span class="o">/</span><span class="n">PortfolioUtils</span>
+<span class="n">cd</span> <span class="s2">"$(basename "</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NicolaDonelli</span><span class="o">/</span><span class="n">PortfolioUtils</span><span class="s2">" .git)"</span>
+</pre></div>
+</div>
+</section>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+</section>
+<section id="set-environment-variables">
+<h3>Set environment variables<a class="headerlink" href="#set-environment-variables" title="Link to this heading">#</a></h3>
+<p>You need to set a few environment variables in your local environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROJECT_DIR</span><span class="o">=</span><span class="n">PATH_TO_THIS_REPOSITORY</span>
+</pre></div>
+</div>
+<p>This variable contain the path that points to the repository root. The corresponding value is also used in CI/CD workflows</p>
+</section>
+<section id="setup-circleci">
+<h3>Setup Circleci<a class="headerlink" href="#setup-circleci" title="Link to this heading">#</a></h3>
+<p>To be able to run the Circleci workflows of this project you need to:</p>
+<ol class="arabic simple">
+<li><p>go to the <a class="reference external" href="https://app.circleci.com/">CircleCI web app</a>, select the <code class="docutils literal notranslate"><span class="pre">Projects</span></code> section from the left hand menu, search for portfolio-utils
+in the list and click on the “Set Up” button associated to it, following the subsequent instructions.</p></li>
+<li><p>in case you have dependencies from other private repositories:</p>
+<ul class="simple">
+<li><p>go to the <a class="reference external" href="https://app.circleci.com/">CircleCI web app</a> and make sure to activate <em>Project Settings &gt; SSH Keys &gt; User Key</em> while having the browser console open.</p></li>
+<li><p>once you activated the User Key you will get the json response of a <code class="docutils literal notranslate"><span class="pre">checkout-key</span></code> request in the <code class="docutils literal notranslate"><span class="pre">network</span></code> tab of the browser console</p></li>
+<li><p>copy the value of <code class="docutils literal notranslate"><span class="pre">public-key</span></code> claim of that json response (it is a public ssh key)</p></li>
+<li><p>paste it between the user ssh keys of your account (In Bitbucket: Log &gt; Personal Bitbucket Settings &gt; SSH Keys &gt; Add key)</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="repository-structure">
+<h2>Repository structure<a class="headerlink" href="#repository-structure" title="Link to this heading">#</a></h2>
+<p>After initialization repository is structured according to the following schema</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PROJECT_DIR
+│   README.md
+│   Dockerfile     ==&gt;  list of docker instructions to build imge
+│   Makefile       ==&gt;  list of make commands
+│   LICENESE       ==&gt;  project license
+│   pyproject.toml ==&gt;  project configurations
+│   .giattributes  ==&gt;  file that gives attributes to pathnames
+│   .gitignore     ==&gt;  list of patterns to ignore with git
+│   .dockerignore  ==&gt;  list of patterns to ignore while building docker image
+│   .commitlintrc.yaml ==&gt;  configurations for commitlint
+│   .pre-commit-config.yaml ==&gt;  configurations for git hooks
+│
+├───.circleci
+│   └── config.yml  ==&gt; setup circleci configuration
+│
+├───.github
+│   │   RELEASE-TEMPLATE.md  ==&gt; Template file for release notes, to be updated by realease action
+│   │
+│   └───workflows
+│       │   continous-delivery.yml  ==&gt; CD workflow
+│       │   continous-integration.yml  ==&gt; CI workflow
+│       └── github-page-build-and-deploy.yml  ==&gt; build and deploy github page with code documentation
+│
+├───portfolio_utils
+│   │   __init__.py  ==&gt; file containing version number
+│   └── py.typed     ==&gt; empty file required by mypy to recognize a typed package
+│
+├───bin ==&gt; folder that will contain executable files
+│
+├───requirements
+│   │   requirements.txt  ==&gt; application's closed requirements, as built by make reqs
+│   └── requirements_dev.txt  ==&gt; development environment's open requirements, as built by make reqs_dev
+│
+├───sphinx ==&gt; sphinx documentation folder containig varius files that will be used to compile code documentations
+│   │   ...
+│
+└───tests ==&gt; unit-tests module
+    └── __init__.py
+</pre></div>
+</div>
+</section>
+<section id="gnu-make">
+<h2>GNU Make<a class="headerlink" href="#gnu-make" title="Link to this heading">#</a></h2>
+<p>This project uses <a class="reference external" href="https://www.gnu.org/software/make/">GNU make</a> to orchestrate of some complex common actions.
+In particular the processes of compiling and installing requirements, running checks (static typing, linting, unittests, etc),
+compiling documentation, building a docker image and running it are streamlined within the Makefile and can be run using
+simple make commands.
+To get a complete list of available make commands the user can simply type <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">help</span></code> but the most relevant are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">setup</span></code>, to setup the minimal environment required for the application</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">setup_dev</span></code>, to setup the full development environment (i.e. including dependencies required for quality checks)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>, to install the package with minimal requirements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install_dev</span></code>, to install the package with development requirements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">checks</span></code>, to check formatting, linting, static typing and running unit-tests</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs</span></code>, to build and compile html documentation using sphinx</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">changelogs</span></code>, to compile changelogs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">tag</span></code>, to create and push on origin a ‘development’ git tag with current package version</p></li>
+</ul>
+</section>
+<section id="etf-data-and-portfolio-analysis">
+<h2>ETF data and portfolio analysis<a class="headerlink" href="#etf-data-and-portfolio-analysis" title="Link to this heading">#</a></h2>
+<p>The executable scripts in <code class="docutils literal notranslate"><span class="pre">bin/</span></code> can download ETF history, select instruments by
+correlation, and run rolling portfolio backtests. Run any script with <code class="docutils literal notranslate"><span class="pre">--help</span></code>
+to see all its options.</p>
+<section id="downloading-investing-com-history">
+<h3>Downloading Investing.com history<a class="headerlink" href="#downloading-investing-com-history" title="Link to this heading">#</a></h3>
+<p>Pass one or more ETF tickers or ISINs to download specific instruments:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>bin/download_investing_etfs.py<span class="w"> </span>SPY<span class="w"> </span>IE00B4L5Y983<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--start<span class="w"> </span><span class="m">2015</span>-01-01<span class="w"> </span>--end<span class="w"> </span><span class="m">2025</span>-12-31<span class="w"> </span>--output<span class="w"> </span>data/selected
+</pre></div>
+</div>
+<p>Dates are inclusive and use <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code>. If no identifiers are supplied, the
+downloader enumerates Investing.com’s public ETF catalog and skips listed
+instruments that have no history. Catalog coverage depends on the public pages
+and pagination exposed by Investing.com and is <strong>not guaranteed to be
+exhaustive</strong>. Omitting either date uses the first or latest available observation
+for each instrument. Without <code class="docutils literal notranslate"><span class="pre">--output</span></code>, CSVs are written under
+<code class="docutils literal notranslate"><span class="pre">data/YYYYMMDD/</span></code> using the UTC download date; filenames follow
+<code class="docutils literal notranslate"><span class="pre">NAME_YYYYMMDD_YYYYMMDD.csv</span></code>. Each CSV contains <code class="docutils literal notranslate"><span class="pre">date,</span> <span class="pre">open,</span> <span class="pre">high,</span> <span class="pre">low,</span> <span class="pre">close,</span> <span class="pre">volume</span></code>.</p>
+</section>
+<section id="portfolio-analysis">
+<h3>Portfolio analysis<a class="headerlink" href="#portfolio-analysis" title="Link to this heading">#</a></h3>
+<p>The analysis loaders accept a directory of these CSV files and align instruments
+on their common price dates. To select a deterministic subset whose pairwise
+absolute simple-return correlations are strictly below 0.4:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>bin/select_uncorrelated_etfs.py<span class="w"> </span>--data-dir<span class="w"> </span>data/selected<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-abs-correlation<span class="w"> </span><span class="m">0</span>.4
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--instruments</span> <span class="pre">file1.csv</span> <span class="pre">file2.csv</span></code> to restrict the input to named CSV files
+(stems without <code class="docutils literal notranslate"><span class="pre">.csv</span></code> are also accepted). Optional <code class="docutils literal notranslate"><span class="pre">--start-date</span></code> and
+<code class="docutils literal notranslate"><span class="pre">--end-date</span></code> restrict the correlation period; by default the script uses the
+first and last dates common to all selected instruments. It prints the selected
+names and their correlation matrix.</p>
+<p>Run a rolling-window validation followed by a separate out-of-sample evaluation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>bin/rolling_backtest.py<span class="w"> </span>--data-dir<span class="w"> </span>data/selected<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--strategy<span class="w"> </span>max_sharpe<span class="w"> </span>--train-years<span class="w"> </span><span class="m">3</span><span class="w"> </span>--validation-years<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>The rolling defaults are a three-year training window, one-year non-overlapping
+validation windows, and all eight implemented metrics. The default rolling
+period starts at the first common date and ends one year and one day before the
+last common date; out-of-sample evaluation starts on the next common trading
+date. The script prints final portfolio weights, validation-period metric
+averages, and out-of-sample metrics. Target strategies require their target
+argument (<code class="docutils literal notranslate"><span class="pre">--target-volatility</span></code> for <code class="docutils literal notranslate"><span class="pre">efficient_risk</span></code>, <code class="docutils literal notranslate"><span class="pre">--target-return</span></code> for
+<code class="docutils literal notranslate"><span class="pre">efficient_return</span></code>, <code class="docutils literal notranslate"><span class="pre">efficient_cvar</span></code>, and <code class="docutils literal notranslate"><span class="pre">efficient_semivariance</span></code>). The
+<code class="docutils literal notranslate"><span class="pre">black_litterman</span></code> strategy requires one of <code class="docutils literal notranslate"><span class="pre">--market-caps</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--prior-returns</span></code>, plus either <code class="docutils literal notranslate"><span class="pre">--absolute-views</span></code> or one or more <code class="docutils literal notranslate"><span class="pre">--relative-view</span></code>
+arguments.</p>
+<p>The optimization API also provides <code class="docutils literal notranslate"><span class="pre">min_volatility</span></code>,
+<code class="docutils literal notranslate"><span class="pre">max_quadratic_utility</span></code>, <code class="docutils literal notranslate"><span class="pre">min_cvar</span></code>, <code class="docutils literal notranslate"><span class="pre">min_semivariance</span></code>, <code class="docutils literal notranslate"><span class="pre">hrp</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">black_litterman</span></code>. Performance metrics are cumulative and annualized return,
+realized and annualized realized volatility, Sharpe and annualized Sharpe ratio,
+and Sortino and annualized Sortino ratio. See <code class="docutils literal notranslate"><span class="pre">--help</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">portfolio_utils.analysis</span></code> package for strategy inputs and metric conventions.</p>
+</section>
+</section>
+<section id="tools-for-the-project">
+<h2>Tools for the project<a class="headerlink" href="#tools-for-the-project" title="Link to this heading">#</a></h2>
+<p>All the configurations for the following tools are contained in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.</p>
+<section id="requirements-tracking">
+<h3>Requirements tracking<a class="headerlink" href="#requirements-tracking" title="Link to this heading">#</a></h3>
+<p>This project uses <a class="reference external" href="https://github.com/astral-sh/uv">uv</a> to handle requirements.
+In particular, we define the package requirements, optional extra requirements and dependency groups in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>
+configuration file, and we use <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">compile</span></code> to compile the complete sets of closed requirements for the package and the
+development environment (to be used only for reference!) and save them in the <code class="docutils literal notranslate"><span class="pre">requirements</span></code> folder as <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>
+and <code class="docutils literal notranslate"><span class="pre">requirements_dev.txt</span></code> files.</p>
+</section>
+<section id="coding-style">
+<h3>Coding style<a class="headerlink" href="#coding-style" title="Link to this heading">#</a></h3>
+<p>This project uses <a class="reference external" href="https://github.com/astral-sh/ruff">ruff</a> for formatting and enforcing a coding style.
+Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">format</span></code> to reformat all source code and tests files to adhere to PEP8 standards.</p>
+</section>
+<section id="code-analysis">
+<h3>Code analysis<a class="headerlink" href="#code-analysis" title="Link to this heading">#</a></h3>
+<p>This project uses <a class="reference external" href="https://github.com/astral-sh/ruff">ruff</a> for static code analysis and <a class="reference external" href="https://github.com/jsh9/pydoclint">pydoclint</a> to analyse docstrings.
+Default configurations for <code class="docutils literal notranslate"><span class="pre">ruff</span></code> are the ones suggested by the <code class="docutils literal notranslate"><span class="pre">ruff</span></code> developers themselves while the default docstring format checked with <code class="docutils literal notranslate"><span class="pre">pydoclint</span></code> is <code class="docutils literal notranslate"><span class="pre">'sphinx'</span></code>.
+Note that default  <code class="docutils literal notranslate"><span class="pre">ruff</span></code> configurations include also the <code class="docutils literal notranslate"><span class="pre">S</span></code> rule set that check for security issues.
+Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lint</span></code> to analyse all source code and tests files.</p>
+</section>
+<section id="static-type-checking">
+<h3>Static type checking<a class="headerlink" href="#static-type-checking" title="Link to this heading">#</a></h3>
+<p>This project uses <a class="reference external" href="https://github.com/python/mypy">mypy</a> for static type checking.
+The default configurations for this tool are quite strict. In particular we set the following flags to true:</p>
+<ul class="simple">
+<li><p>explicit_package_bases: This flag tells mypy that top-level packages will be based in either the current directory, or a member of the MYPYPATH environment variable or mypy_path config option. This option is only useful in the absence of <strong>init</strong>.py. See <a class="reference external" href="https://mypy.readthedocs.io/en/stable/running_mypy.html#mapping-paths-to-modules">Mapping file paths</a> to modules for details.</p></li>
+<li><p>namespace_packages: Enables import discovery of namespace packages (see <a class="reference external" href="https://peps.python.org/pep-0420/">PEP 420</a>). In particular, this prevents discovery of packages that don’t have an <strong>init</strong>.py (or <strong>init</strong>.pyi) file. his flag affects how mypy finds modules and packages explicitly passed on the command line. It also affects how mypy determines fully qualified module names for files passed on the command line. See <a class="reference external" href="https://mypy.readthedocs.io/en/stable/running_mypy.html#mapping-paths-to-modules">Mapping file paths to modules</a> for details.</p></li>
+<li><p>disallow_untyped_calls: Disallows calling functions without type annotations from functions with type annotations.</p></li>
+<li><p>disallow_untyped_defs: Disallows defining functions without type annotations or with incomplete type annotations.</p></li>
+<li><p>disallow_untyped_decorators: Reports an error whenever a function with type annotations is decorated with a decorator without annotations.</p></li>
+<li><p>disallow_any_generics: Disallows usage of generic types that do not specify explicit type parameters.</p></li>
+<li><p>disallow_subclassing_any: Disallows subclassing a value of type Any.</p></li>
+<li><p>warn_unused_configs: Warns about per-module sections in the config file that do not match any files processed when invoking mypy.</p></li>
+<li><p>warn_redundant_casts: Warns about casting an expression to its inferred type.</p></li>
+<li><p>warn_unused_ignores: Warns about unneeded # type: ignore comments.</p></li>
+<li><p>warn_return_any: Shows a warning when returning a value with type Any from a function declared with a non- Any return type.</p></li>
+<li><p>implicit_reexport: By default, imported values to a module are treated as exported and mypy allows other modules to import them. When false, mypy will not re-export unless the item is imported using from-as or is included in <strong>all</strong>. Note that mypy treats stub files as if this is always disabled.</p></li>
+<li><p>strict_equality: Prohibit equality checks, identity checks, and container checks between non-overlapping types.
+Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">mypy</span></code> to analyse all source code and tests files.</p></li>
+</ul>
+</section>
+<section id="license-compatibility-checks">
+<h3>License compatibility checks<a class="headerlink" href="#license-compatibility-checks" title="Link to this heading">#</a></h3>
+<p>This project uses <a class="reference external" href="https://github.com/FHPythonUtils/LicenseCheck"><code class="docutils literal notranslate"><span class="pre">licensecheck</span></code></a> to check compatibility between the license of this package and the ones of its depencencies.</p>
+</section>
+<section id="unit-testing">
+<h3>Unit-testing<a class="headerlink" href="#unit-testing" title="Link to this heading">#</a></h3>
+<p>This project uses <a class="reference external" href="https://docs.pytest.org/en/stable/"><code class="docutils literal notranslate"><span class="pre">pytest</span></code></a> for tests. Unit tests are in <code class="docutils literal notranslate"><span class="pre">tests/unit/</span></code> and run offline with <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">tests</span></code>; this is the test target included in <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">checks</span></code>.</p>
+<p>Live integration tests are in <code class="docutils literal notranslate"><span class="pre">tests/integration/</span></code>. They make real requests to Investing.com and are deliberately excluded from <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">checks</span></code>. Run them explicitly with <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">integration</span></code> when network access and a live site check are appropriate.</p>
+</section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h3>
+<p>This project uses <a class="reference external" href="https://www.sphinx-doc.org/en/master/"><code class="docutils literal notranslate"><span class="pre">Sphinx</span></code></a> as a tool to create documentation.
+Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs</span></code> to automatically build documentation in html format.
+There is a Github workflow setup to publish documentation on the repo’s Github Page at every push on <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.
+To let this action run smoothly there must exist the <code class="docutils literal notranslate"><span class="pre">gh_pages</span></code>branch and the Github Page must be manually setted (from
+github repo web interface &gt; Settings &gt; Pages) to use <code class="docutils literal notranslate"><span class="pre">gh_pages</span></code> as source branch and <code class="docutils literal notranslate"><span class="pre">/root</span></code> as source folder.
+Since this action requires a GITHUB_TOKEN, for its first run in the repo it will be necessary to follow the steps
+detailed <a class="reference external" href="https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token">here</a> to make the action run fine from then on.</p>
+</section>
+<section id="semantic-versioning">
+<h3>Semantic Versioning<a class="headerlink" href="#semantic-versioning" title="Link to this heading">#</a></h3>
+<p>This project automatically applies semantic versioning based on tags following PEP440 using <a class="reference external" href="https://github.com/pypa/setuptools_scm"><code class="docutils literal notranslate"><span class="pre">setuptools_scm</span></code></a>.</p>
+</section>
+<section id="changelog-generation">
+<h3>Changelog generation<a class="headerlink" href="#changelog-generation" title="Link to this heading">#</a></h3>
+<p>This project uses <a class="reference external" href="https://github.com/orhun/git-cliff"><code class="docutils literal notranslate"><span class="pre">git-cliff</span></code></a> to automatically generate changelogs.
+This tool is configured to take into account commit messages following the <a class="reference external" href="https://www.conventionalcommits.org/">conventional-commits</a> standard.</p>
+</section>
+</section>
+<section id="git-hooks">
+<h2>Git hooks<a class="headerlink" href="#git-hooks" title="Link to this heading">#</a></h2>
+<p>This project uses <a class="reference external" href="https://github.com/pre-commit/pre-commit"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a>, as configured in <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file, to run git hooks at different stages.
+In particular, we define the following hooks:</p>
+<ul class="simple">
+<li><p>checks: runs the local <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">checks</span></code> command at pre-push stage.</p></li>
+<li><p>detect-secrets: uses <a class="reference external" href="https://github.com/Yelp/detect-secrets"><code class="docutils literal notranslate"><span class="pre">detect-secrets</span></code></a> to automatically search for secrets versioned in the current diff. It runs at pre-commit stage.</p></li>
+<li><p>commitlint: uses <a class="reference external" href="https://github.com/alessandrojcm/commitlint-pre-commit-hook"><code class="docutils literal notranslate"><span class="pre">commitlint</span></code></a> to check, at commit-msg stage, that commit message follows the <a class="reference external" href="https://www.conventionalcommits.org/">conventional-commits</a> standard as configured in the <code class="docutils literal notranslate"><span class="pre">.commitlintrc.yaml</span></code> file.
+Specifically:</p>
+<ul>
+<li><p>Commits must start with a type, such as “chore”, “fix”, “feat”, “doc”, “perf”, “refactor”, “style” or “test” followed by an OPTIONAL scope in parentheses, an OPTIONAL exclamation mark “!” to indicate non-backward-compatible changes (a.k.a. “Breaking Changes”), and a colon and a space (”: “) which are both REQUIRED.</p></li>
+<li><p>The “chore” type should be used when a commit represents an insignificant internal change (i.e., a change that does not directly impact how the user interacts with the application).</p></li>
+<li><p>The “fix” type should be used when a commit represents a bugfix to the application (i.e., a change that either doesn’t directly impact the user or corrects an error).</p></li>
+<li><p>The “feat” type should be used when a commit adds a new feature to the application (i.e., an addition that directly impacts how the user interacts with the application).</p></li>
+<li><p>A scope CAN be included in parentheses after the type. A scope typically consists of a single word indicating a code module affected by the commit or a Jira task identifier, e.g., “fix(parser):” or “fix(prjaiaas-134)”.</p></li>
+<li><p>The description MUST immediately follow the colon-space “: “ after the prefix containing the type and, optionally, the scope. It MUST end with a period (dot). The description is a brief summary in ENGLISH of the code changes. E.g., “fix: solved parsing issues with multiple spaces in strings.”.</p></li>
+<li><p>A longer commit body CAN be provided after the description to give additional information about the changes made to the code (particularly useful for very large commits). The body MUST start with a blank line after the description and MUST be written in ENGLISH.</p></li>
+<li><p>The commit body is in free form and MAY consist of any number of paragraphs separated by a new line.</p></li>
+<li><p>One or more footers CAN be provided on a blank line after the commit body. Each footer MUST consist of a single-word token followed by “: “ or “ #”, followed by a string (this is inspired by the git trailer convention).</p></li>
+<li><p>A footer token MUST use the dash (“-”) character instead of spaces, for example Acked-by (this helps differentiate the footer section from a multi-paragraph commit body). An exception is made for “BREAKING CHANGE”, which MAY also be used as a footer token.</p></li>
+<li><p>A footer’s value CAN contain spaces and newlines: the automatic parsing of a footer MUST stop when the next valid token/separator pair of the next footer is observed.</p></li>
+<li><p>Breaking changes MUST be indicated in the commit’s type/scope prefix, or as a specific footer entry.</p></li>
+<li><p>If included as a footer, Breaking Changes MUST start with the token “BREAKING CHANGE: “ followed by a description of the change, e.g., BREAKING CHANGE: environment variables now have precedence over configuration files.</p></li>
+<li><p>If included in the prefix with the type and, optionally, scope, breaking changes MUST be indicated with an exclamation mark “!” immediately before the colon “:” that concludes the prefix. If “!” is used, “BREAKING CHANGE: “ CAN be omitted from the footer section, and the description MUST be used to describe the breaking change.</p></li>
+<li><p>“BREAKING-CHANGE” MUST be synonymous with “BREAKING CHANGE” when used as a footer token.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="continuous-integration-and-continuous-delivery">
+<h2>Continuous Integration and Continuous Delivery<a class="headerlink" href="#continuous-integration-and-continuous-delivery" title="Link to this heading">#</a></h2>
+<p>CI/CD workflows can be performed with either GithubActions of Circleci but, in any case, the same steps are performed.</p>
+<section id="ci-workflow">
+<h3>CI workflow<a class="headerlink" href="#ci-workflow" title="Link to this heading">#</a></h3>
+<p>This workflow is activated only by commits on an open Pull Request and checks the application,
+by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">checks</span></code> on checked-out code.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to portfolio-utils documentation!</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../userguide/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-application">Run the application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-the-application">Clone the application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-environment-variables">Set environment variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-circleci">Setup Circleci</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-structure">Repository structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-make">GNU Make</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etf-data-and-portfolio-analysis">ETF data and portfolio analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-investing-com-history">Downloading Investing.com history</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-analysis">Portfolio analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-for-the-project">Tools for the project</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-tracking">Requirements tracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-style">Coding style</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-analysis">Code analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-type-checking">Static type checking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#license-compatibility-checks">License compatibility checks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing">Unit-testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-versioning">Semantic Versioning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog-generation">Changelog generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-hooks">Git hooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-and-continuous-delivery">Continuous Integration and Continuous Delivery</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-workflow">CI workflow</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Author name not set
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, NicolaDonelli.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
