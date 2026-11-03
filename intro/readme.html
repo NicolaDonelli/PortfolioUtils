@@ -73,6 +73,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#git-hooks">Git hooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#continuous-integration-and-continuous-delivery">Continuous Integration and Continuous Delivery</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ci-workflow">CI workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github-page-build-and-deploy-workflow">Github page build and deploy workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -291,6 +292,7 @@ correlation, and run rolling portfolio backtests. Run any script with <code clas
 to see all its options.</p>
 <section id="downloading-investing-com-history">
 <h3>Downloading Investing.com history<a class="headerlink" href="#downloading-investing-com-history" title="Link to this heading"></a></h3>
+<p><em>To work, the download module requires valid credentials stored in a .env file directly under repo root defining the values for INVESTING_EMAIL and INVESTING_PASSWORD variables</em></p>
 <p>Pass one or more ETF tickers or ISINs to download specific instruments:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>bin/download_investing_etfs.py<span class="w"> </span>SPY<span class="w"> </span>IE00B4L5Y983<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--start<span class="w"> </span><span class="m">2015</span>-01-01<span class="w"> </span>--end<span class="w"> </span><span class="m">2025</span>-12-31<span class="w"> </span>--output<span class="w"> </span>data/selected
@@ -465,11 +467,14 @@ Specifically:</p>
 </section>
 <section id="continuous-integration-and-continuous-delivery">
 <h2>Continuous Integration and Continuous Delivery<a class="headerlink" href="#continuous-integration-and-continuous-delivery" title="Link to this heading"></a></h2>
-<p>CI/CD workflows can be performed with either GithubActions of Circleci but, in any case, the same steps are performed.</p>
+<p>CI/CD workflows can be performed with GithubActions.</p>
 <section id="ci-workflow">
 <h3>CI workflow<a class="headerlink" href="#ci-workflow" title="Link to this heading"></a></h3>
-<p>This workflow is activated only by commits on an open Pull Request and checks the application,
-by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">checks</span></code> on checked-out code.</p>
+<p>This workflow is activated only by commits on an open Pull Request and checks the application, by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">checks</span></code> on checked-out code.</p>
+</section>
+<section id="github-page-build-and-deploy-workflow">
+<h3>Github page build and deploy workflow<a class="headerlink" href="#github-page-build-and-deploy-workflow" title="Link to this heading"></a></h3>
+<p>This workflow is activated by each commit pushed on the main branch. It compiles the technical docs and deploys the updated Github page at <a class="reference external" href="https://nicoladonelli.github.io/PortfolioUtils/">https://nicoladonelli.github.io/PortfolioUtils/</a></p>
 </section>
 </section>
 </section>
