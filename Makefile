@@ -64,14 +64,14 @@ $(pre_deps_tag):
 	@echo "==Installing pip-tools, black and pre-commit=="
 	${PYTHON} -m pip install --upgrade --quiet pip setuptools tomli
 	${PYTHON} -m pip install --quiet --group base
-	if [[ -d .git ]] && [[ ! -s .git/hooks/pre-commit ]]; then pre-commit install; fi;
-	if [[ -d .git ]] && [[ ! -s .git/hooks/commit-msg ]]; then pre-commit install --hook-type commit-msg; fi;
-	if [[ -d .git ]] && [[ ! -s .git/hooks/pre-push ]]; then pre-commit install --hook-type pre-push; fi;
+	if [[ "$${GITHUB_ACTIONS:-}" != "true" ]] && [[ -d .git ]] && [[ ! -s .git/hooks/pre-commit ]]; then pre-commit install; fi;
+	if [[ "$${GITHUB_ACTIONS:-}" != "true" ]] && [[ -d .git ]] && [[ ! -s .git/hooks/commit-msg ]]; then pre-commit install --hook-type commit-msg; fi;
+	if [[ "$${GITHUB_ACTIONS:-}" != "true" ]] && [[ -d .git ]] && [[ ! -s .git/hooks/pre-push ]]; then pre-commit install --hook-type pre-push; fi;
 	touch $(pre_deps_tag)
 
 requirements/requirements_dev.txt: pyproject.toml $(pre_deps_tag)
 	@echo "==Compiling requirements_dev.txt=="
-	uv pip compile \
+	${PYTHON} -m uv pip compile \
 		--output-file $(cache_dir)/requirements_dev_tmp.txt \
 		--no-emit-index-url \
 		--all-extras \
@@ -85,7 +85,7 @@ reqs_dev: requirements/requirements_dev.txt
 
 requirements/requirements.txt: requirements/requirements_dev.txt
 	@echo "==Compiling requirements.txt=="
-	uv pip compile \
+	${PYTHON} -m uv pip compile \
 		--output-file $(cache_dir)/requirements_tmp.txt \
 		--constraints requirements/requirements_dev.txt \
 		--no-emit-index-url \
@@ -99,14 +99,14 @@ reqs: requirements/requirements.txt
 
 $(env_tag): requirements/requirements.txt
 	@echo "==Installing requirements.txt=="
-	uv pip sync --quiet requirements/requirements.txt
+	${PYTHON} -m uv pip sync --quiet requirements/requirements.txt
 	rm -f $(env_dev_tag)
 	rm -f $(install_tag)
 	touch $(env_tag)
 
 $(env_dev_tag): requirements/requirements_dev.txt
 	@echo "==Installing requirements_dev.txt=="
-	uv pip sync --quiet requirements/requirements_dev.txt
+	${PYTHON} -m uv pip sync --quiet requirements/requirements_dev.txt
 	rm -f $(env_tag)
 	rm -f $(install_tag)
 	touch $(env_dev_tag)
@@ -117,19 +117,19 @@ setup_dev: $(env_dev_tag)
 
 $(build_tag): $(files) pyproject.toml requirements/requirements.txt
 	@echo "==Building package distribution=="
-	uv build --no-build-logs
+	${PYTHON} -m uv build --no-build-logs
 	ls -rt  dist/*.tar.gz | tail -1 > $(build_tag)
 
 build: $(build_tag)
 
 $(install_tag): build
 	@echo "==Installing package=="
-	uv pip install --quiet $(shell ls -rt  dist/*.tar.gz | tail -1)
+	${PYTHON} -m uv pip install --quiet $(shell ls -rt  dist/*.tar.gz | tail -1)
 	ls -rt  dist/*.tar.gz | tail -1 > $(install_tag)
 
 uninstall:
 	@echo "==Uninstalling all packages=="
-	uv pip sync --allow-empty-requirements --quiet /dev/null
+	${PYTHON} -m uv pip sync --allow-empty-requirements --quiet /dev/null
 	@echo "==Removing all tags=="
 	rm -f $(env_tag) $(env_dev_tag) $(pre_deps_tag) $(install_tag)
 
@@ -174,7 +174,7 @@ docs: install_dev $(doc_files) pyproject.toml
 
 clean: uninstall
 	@echo "==Cleaning environment=="
-	uv cache clean
+	${PYTHON} -m uv cache clean
 	rm -rf \
 		dist \
 		docs \
