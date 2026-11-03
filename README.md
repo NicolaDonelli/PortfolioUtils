@@ -20,75 +20,155 @@ PROJECT_DIR=PATH_TO_THIS_REPOSITORY
 ```
 This variable contain the path that points to the repository root. The corresponding value is also used in CI/CD workflows
 
-### Setup Circleci
-To be able to run the Circleci workflows of this project you need to:
-1. go to the [CircleCI web app](https://app.circleci.com/), select the `Projects` section from the left hand menu, search for portfolio-utils 
-in the list and click on the "Set Up" button associated to it, following the subsequent instructions.
-2. in case you have dependencies from other private repositories:
-   * go to the [CircleCI web app](https://app.circleci.com/) and make sure to activate _Project Settings > SSH Keys > User Key_ while having the browser console open.
-   * once you activated the User Key you will get the json response of a `checkout-key` request in the `network` tab of the browser console
-   * copy the value of `public-key` claim of that json response (it is a public ssh key)
-   * paste it between the user ssh keys of your account (In Bitbucket: Log > Personal Bitbucket Settings > SSH Keys > Add key)
-
 ## Repository structure
-After initialization repository is structured according to the following schema
+The repository is organized as follows:
 ```
-PROJECT_DIR
-│   README.md
-│   Dockerfile     ==>  list of docker instructions to build imge
-│   Makefile       ==>  list of make commands
-│   LICENESE       ==>  project license
-│   pyproject.toml ==>  project configurations
-│   .giattributes  ==>  file that gives attributes to pathnames
-│   .gitignore     ==>  list of patterns to ignore with git
-│   .dockerignore  ==>  list of patterns to ignore while building docker image
-│   .commitlintrc.yaml ==>  configurations for commitlint
-│   .pre-commit-config.yaml ==>  configurations for git hooks
-│
-├───.circleci
-│   └── config.yml  ==> setup circleci configuration
-│
-├───.github
-│   │   RELEASE-TEMPLATE.md  ==> Template file for release notes, to be updated by realease action
-│   │
-│   └───workflows
-│       │   continous-delivery.yml  ==> CD workflow
-│       │   continous-integration.yml  ==> CI workflow
-│       └── github-page-build-and-deploy.yml  ==> build and deploy github page with code documentation
-│
-├───portfolio_utils
-│   │   __init__.py  ==> file containing version number
-│   └── py.typed     ==> empty file required by mypy to recognize a typed package
-│   
-├───bin ==> folder that will contain executable files
-│   
-├───requirements
-│   │   requirements.txt  ==> application's closed requirements, as built by make reqs
-│   └── requirements_dev.txt  ==> development environment's open requirements, as built by make reqs_dev
-│   
-├───sphinx ==> sphinx documentation folder containig varius files that will be used to compile code documentations
-│   │   ... 
-│   
-└───tests ==> unit-tests module
-    └── __init__.py
+PROJECT_DIR                     # Repository root
+├── .commitlintrc.yaml          # Commit message rules
+├── .devcontainer/              # Development container configuration
+│   ├── devcontainer-lock.json  # Pinned container feature versions
+│   └── devcontainer.json       # Container setup
+├── .dockerignore               # Files excluded from Docker builds
+├── .gitattributes              # Git file attributes
+├── .github/                    # GitHub and Copilot configuration
+│   ├── agents/                 # Specialized coding agents
+│   │   ├── code-reviewer.agent.md           # Review agent definition
+│   │   ├── investing-data-engineer.agent.md # Downloader agent definition
+│   │   ├── planner.agent.md                 # Planning agent definition
+│   │   ├── python-implementer.agent.md       # Python implementation agent
+│   │   └── quant-analyst.agent.md            # Portfolio analysis agent
+│   ├── copilot-guidelines/     # Copilot contribution guidelines
+│   │   ├── code-review.md      # Code review guidance
+│   │   └── commit-messages.md  # Commit message guidance
+│   ├── hooks/                  # Repository automation hooks
+│   │   ├── scripts/            # Hook implementations
+│   │   │   ├── _hooklib.py       # Shared hook utilities
+│   │   │   ├── guard_tool_use.py # Tool-use policy guard
+│   │   │   ├── post_edit_lint.py # Post-edit lint hook
+│   │   │   ├── quality_gate.py   # Quality-gate hook
+│   │   │   └── session_context.py # Session context hook
+│   │   ├── context.json        # Session context hook settings
+│   │   ├── quality.json        # Quality hook settings
+│   │   └── security.json       # Security hook settings
+│   ├── instructions/           # Path-specific coding instructions
+│   │   ├── analysis.instructions.md       # Analysis package guidance
+│   │   ├── download.instructions.md       # Download package guidance
+│   │   ├── project-config.instructions.md # Project configuration guidance
+│   │   ├── python-source.instructions.md  # Python source guidance
+│   │   └── tests.instructions.md          # Test authoring guidance
+│   ├── skills/                 # Reusable project workflows
+│   │   ├── add-dependency/     # Dependency management workflow
+│   │   │   └── SKILL.md        # Dependency skill instructions
+│   │   ├── conventional-commit/ # Commit message workflow
+│   │   │   └── SKILL.md        # Commit skill instructions
+│   │   ├── investing-downloader/ # Investing.com download workflow
+│   │   │   ├── reference/      # Downloader reference material
+│   │   │   │   ├── csv-schema.md # CSV data schema
+│   │   │   │   └── design.md   # Downloader design
+│   │   │   └── SKILL.md        # Downloader skill instructions
+│   │   ├── portfolio-construction/ # Portfolio construction workflow
+│   │   │   ├── reference/      # Portfolio construction references
+│   │   │   │   └── methods.md  # Portfolio method descriptions
+│   │   │   └── SKILL.md        # Construction skill instructions
+│   │   ├── quality-gate/       # Quality checks workflow
+│   │   │   ├── scripts/        # Quality gate helper scripts
+│   │   │   │   └── run_checks.sh # Run selected quality checks
+│   │   │   └── SKILL.md        # Quality gate instructions
+│   │   ├── timeseries-analysis/ # Time-series analysis workflow
+│   │   │   ├── reference/      # Time-series reference material
+│   │   │   │   └── formulas.md # Metric formulas
+│   │   │   └── SKILL.md        # Analysis skill instructions
+│   │   └── write-tests/        # Test authoring workflow
+│   │       ├── SKILL.md        # Test writing instructions
+│   │       └── test_template.py # Typed test template
+│   ├── workflows/              # CI, release, and documentation workflows
+│   │   ├── PyPI-release.yml    # Publish releases to PyPI
+│   │   ├── TestPyPI-release.yml # Publish test releases to TestPyPI
+│   │   ├── continuous-delivery.yml # Continuous delivery workflow
+│   │   ├── continuous-integration.yml # Continuous integration workflow
+│   │   └── github-page-build-and-deploy.yml # Build and deploy documentation
+│   ├── copilot-instructions.md # Repository-wide Copilot instructions
+│   └── RELEASE-TEMPLATE.md     # Release notes template
+├── .git_archival.txt           # Git archive metadata
+├── .gitignore                  # Files excluded from Git
+├── .mcp.json                   # MCP server configuration
+├── .pre-commit-config.yaml     # Git hook configuration
+├── .vscode/                    # Workspace editor settings
+│   └── settings.json           # VS Code workspace configuration
+├── Dockerfile                  # Container build instructions
+├── LICENSE                     # Project license
+├── MANIFEST.in                 # Source distribution file manifest
+├── Makefile                    # Development, quality, and documentation commands
+├── README.md                   # Project overview and usage guide
+├── bin/                        # Executable scripts and utilities
+│   ├── 20261101-CompleteExecution.sh # Example full execution script
+│   ├── download_investing_etfs.py # Download historical ETF data
+│   ├── init_repo.sh            # Initialize the development repository
+│   ├── rolling_backtest.py     # Run rolling portfolio backtests
+│   └── select_uncorrelated_etfs.py # Select low-correlation ETFs
+├── portfolio_utils/            # Typed Python package
+│   ├── analysis/               # Time-series analysis and portfolio construction
+│   │   ├── __init__.py         # Public analysis API
+│   │   ├── _validation.py      # Shared input validation
+│   │   ├── backtest.py         # Portfolio backtesting
+│   │   ├── loading.py          # Load and align price data
+│   │   ├── metrics.py          # Performance and risk metrics
+│   │   ├── optimization.py     # Portfolio optimization strategies
+│   │   └── returns.py          # Return calculation and resampling
+│   ├── download/               # Investing.com data download components
+│   │   ├── __init__.py         # Public download API
+│   │   ├── cli.py              # Downloader command-line interface
+│   │   ├── client.py           # HTTP client and request handling
+│   │   ├── downloader.py       # Download orchestration
+│   │   ├── errors.py           # Download exception types
+│   │   ├── models.py           # Download data models
+│   │   ├── source.py           # Investing.com data source
+│   │   └── storage.py          # Historical price CSV storage
+│   ├── __init__.py             # Package version metadata
+│   ├── py.typed                # Marker for typed package support
+│   └── settings.py             # Environment-based configuration
+├── pyproject.toml              # Package metadata and tool configuration
+├── requirements/               # Generated requirements configuration
+│   └── .gitignore              # Keep generated requirements out of Git
+├── sphinx/                     # Sphinx documentation source and build files
+└── tests/                      # Automated tests and recorded fixtures
+    ├── integration/            # Opt-in live integration tests
+    │   ├── __init__.py         # Integration test package
+    │   └── test_investing_com.py # Investing.com integration tests
+    ├── unit/                   # Offline unit tests
+    │   ├── analysis/           # Analysis and portfolio tests
+    │   │   ├── __init__.py     # Analysis test package
+    │   │   ├── test_backtest.py # Backtest tests
+    │   │   ├── test_loading.py # Price loading tests
+    │   │   ├── test_metrics.py # Performance metric tests
+    │   │   ├── test_optimization.py # Optimization strategy tests
+    │   │   ├── test_optimization_edges.py # Optimization edge cases
+    │   │   ├── test_optimization_validation.py # Optimization input validation tests
+    │   │   ├── test_returns.py # Return calculation tests
+    │   │   └── test_validation.py # Shared validation tests
+    │   ├── cli/                # Command-line interface tests
+    │   │   ├── __init__.py     # CLI test package
+    │   │   └── test_analysis_cli.py # Analysis CLI tests
+    │   ├── download/           # Downloader component tests
+    │   │   ├── __init__.py     # Download test package
+    │   │   ├── test_cli.py     # Downloader CLI tests
+    │   │   ├── test_client.py  # HTTP client tests
+    │   │   ├── test_downloader.py # Download orchestration tests
+    │   │   ├── test_investing_source.py # Data source tests
+    │   │   └── test_storage.py # CSV storage tests
+    │   ├── resources/          # Test fixtures
+    │   │   └── investing/      # Recorded Investing.com responses
+    │   │       ├── etf_category_row_ok.html # ETF category page fixture
+    │   │       ├── etf_index_ok.html # ETF index page fixture
+    │   │       └── historical_daily_ok.json # Historical prices fixture
+    │   ├── __init__.py         # Unit test package
+    │   └── test_settings.py    # Settings tests
+    └── __init__.py             # Test package
 ```
-
-## GNU Make
-This project uses [GNU make](https://www.gnu.org/software/make/) to orchestrate of some complex common actions. 
-In particular the processes of compiling and installing requirements, running checks (static typing, linting, unittests, etc), 
-compiling documentation, building a docker image and running it are streamlined within the Makefile and can be run using 
-simple make commands.
-To get a complete list of available make commands the user can simply type `make help` but the most relevant are:
-* ``make setup``, to setup the minimal environment required for the application
-* ``make setup_dev``, to setup the full development environment (i.e. including dependencies required for quality checks)
-* ``make install``, to install the package with minimal requirements
-* ``make install_dev``, to install the package with development requirements
-* ``make checks``, to check formatting, linting, static typing and running unit-tests
-* ``make docs``, to build and compile html documentation using sphinx
-* ``make changelogs``, to compile changelogs 
-* ``make tag``, to create and push on origin a 'development' git tag with current package version
 
 ## ETF data and portfolio analysis
+
+The tecnical documentation for the current repository is available on the Github Page: https://nicoladonelli.github.io/PortfolioUtils/
 
 The executable scripts in `bin/` can download ETF history, select instruments by
 correlation, and run rolling portfolio backtests. Run any script with `--help`
@@ -155,6 +235,22 @@ The optimization API also provides `min_volatility`,
 realized and annualized realized volatility, Sharpe and annualized Sharpe ratio,
 and Sortino and annualized Sortino ratio. See `--help` and the
 `portfolio_utils.analysis` package for strategy inputs and metric conventions.
+
+
+## GNU Make
+This project uses [GNU make](https://www.gnu.org/software/make/) to orchestrate of some complex common actions. 
+In particular the processes of compiling and installing requirements, running checks (static typing, linting, unittests, etc), 
+compiling documentation, building a docker image and running it are streamlined within the Makefile and can be run using 
+simple make commands.
+To get a complete list of available make commands the user can simply type `make help` but the most relevant are:
+* ``make setup``, to setup the minimal environment required for the application
+* ``make setup_dev``, to setup the full development environment (i.e. including dependencies required for quality checks)
+* ``make install``, to install the package with minimal requirements
+* ``make install_dev``, to install the package with development requirements
+* ``make checks``, to check formatting, linting, static typing and running unit-tests
+* ``make docs``, to build and compile html documentation using sphinx
+* ``make changelogs``, to compile changelogs 
+* ``make tag``, to create and push on origin a 'development' git tag with current package version
 
 ## Tools for the project
 All the configurations for the following tools are contained in ``pyproject.toml`` file.
